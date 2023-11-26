@@ -1,0 +1,26 @@
+@import "../../../styles/ThemeVariables";
+@import "../../../styles/Utils";
+
+.customChartTooltip {
+  background: red;
+  border-radius: 5px;
+  background: $secondary-background;
+  box-shadow: $panel-shadow-dark;
+  padding: 10px;
+  box-sizing: content-box;
+  border: 1px solid $transparent-text;
+  @include flex-column;
+  @include align-start-justify-start;
+  gap: 10px;
+
+  > h4 {
+    color: $text;
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  > span {
+    color: $secondary-text;
+    font-size: 16pxs;
+  }
+}

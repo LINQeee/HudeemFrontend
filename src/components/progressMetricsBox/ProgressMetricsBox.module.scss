@@ -1,0 +1,12 @@
+@import "../../styles/ThemeVariables.scss";
+@import "../../styles/Utils.scss";
+
+.progressMetricsBox {
+  background: $secondary-background;
+  padding: 0 30px 30px 30px;
+  width: 75%;
+  height: 75%;
+  border-radius: 8px;
+  @include flex-column;
+  @include align-start-justify-start;
+}

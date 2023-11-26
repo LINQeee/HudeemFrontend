@@ -1,0 +1,10 @@
+@import "../../../styles/ThemeVariables.scss";
+@import "../../../styles/Utils.scss";
+
+.separator {
+  height: 100%;
+  width: 1px;
+  background: $transparent-text;
+  border-radius: 30px;
+  margin: 0 10px;
+}
