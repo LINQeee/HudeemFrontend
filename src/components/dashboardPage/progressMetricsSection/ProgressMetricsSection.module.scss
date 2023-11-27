@@ -1,0 +1,10 @@
+@import "../../../styles/ThemeVariables.scss";
+@import "../../../styles/Utils.scss";
+
+.progressMetricsBox {
+  @include panel-styles;
+  width: 100%;
+  height: calc(100% - 180px);
+  @include flex-column;
+  @include align-start-justify-between;
+}

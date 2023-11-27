@@ -9,6 +9,10 @@ export const formatFullISODate = (isoDate: string): string => {
     return `${formatISODate(isoDate)} ${date.getFullYear()}`;
 }
 
+export const formatNumeralFullDate = (isoDate: string): string => {
+    return new Date(isoDate).toLocaleDateString("default");
+}
+
 const capitalize = (str: string): string => {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }

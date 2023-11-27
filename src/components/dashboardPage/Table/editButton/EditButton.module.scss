@@ -1,0 +1,21 @@
+@import "../../../../styles/ThemeVariables.scss";
+@import "../../../../styles/Utils.scss";
+
+.editButton {
+  width: 30px;
+  height: 20px;
+  @include flex-all-center;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+
+  &:hover > i {
+    color: $text;
+  }
+
+  > i {
+    scale: 1.7;
+    color: $secondary-text;
+    transition: all 0.2s ease;
+  }
+}

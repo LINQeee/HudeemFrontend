@@ -2,7 +2,7 @@ import "./App.scss";
 import {useFetchUserQuery} from "./api/userApi.ts";
 import AsideBar from "./components/asideBar/AsideBar.tsx";
 import Header from "./components/headerBar/header/Header.tsx";
-import DashboardBox from "./components/dashboardBox/DashboardBox.tsx";
+import Dashboard from "./components/dashboardPage/dashboard/Dashboard.tsx";
 
 function App() {
 
@@ -14,7 +14,7 @@ function App() {
         <>
             <AsideBar/>
             <Header/>
-            <DashboardBox/>
+            <Dashboard/>
         </>
     )
 }

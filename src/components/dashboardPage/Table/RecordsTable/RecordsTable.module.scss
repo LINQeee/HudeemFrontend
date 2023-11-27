@@ -1,0 +1,33 @@
+@import "../../../../styles/ThemeVariables.scss";
+@import "../../../../styles/Utils.scss";
+
+.recordsTable {
+  @include flex-column;
+  @include align-start-justify-start;
+  width: calc(100% + 60px);
+  margin-left: -30px;
+  height: 100%;
+  max-height: calc(100% - 132px);
+
+  > ul {
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    max-height: calc(100% - 30px);
+
+    &::-webkit-scrollbar {
+      width: 5px;
+      border-radius: 5px;
+    }
+
+
+    &::-webkit-scrollbar-track {
+      background: $transparent-text;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $secondary-text;
+      border-radius: 5px;
+    }
+  }
+}

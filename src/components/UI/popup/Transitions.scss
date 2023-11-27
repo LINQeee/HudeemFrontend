@@ -1,0 +1,21 @@
+.popup-enter {
+  opacity: 0;
+  scale: .5;
+}
+
+.popup-enter-active {
+  opacity: 1;
+  scale: 1;
+  transition: all .2s ease;
+}
+
+.popup-exit {
+  opacity: 1;
+  scale: 1;
+}
+
+.popup-exit-active {
+  opacity: 0;
+  scale: .5;
+  transition: all .2s ease;
+}

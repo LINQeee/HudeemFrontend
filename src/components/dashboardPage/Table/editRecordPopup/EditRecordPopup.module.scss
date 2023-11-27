@@ -1,0 +1,15 @@
+@import "../../../../styles/ThemeVariables";
+@import "../../../../styles/Utils";
+
+.editRecordPopup {
+  position: absolute;
+  width: 150px;
+  background: red;
+  z-index: 100;
+  top: 100%;
+  right: 0;
+  @include panel-styles;
+  @include flex-column;
+  @include align-start-justify-between;
+  padding: 5px;
+}
