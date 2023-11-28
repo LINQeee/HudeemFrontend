@@ -1,0 +1,18 @@
+@import "../../../../styles/ThemeVariables.scss";
+@import "../../../../styles/Utils.scss";
+
+.createRecordForm {
+  width: 70%;
+  align-self: center;
+  background: red;
+  position: absolute;
+  top: 150px;
+  @include panel-styles;
+  @include flex-column;
+  padding: 0  20px 20px 20px;
+  gap: 20px;
+
+  button:last-child {
+    margin-top: 10px;
+  }
+}

@@ -9,7 +9,7 @@ import {
 } from "recharts";
 import {IRecord} from "../../../../models/IRecord.ts";
 import {FC} from "react";
-import {IRecordChartData} from "../../../../utils/RecordTypes.ts";
+import {IRecordChartData} from "../../../../utils/RecordType.ts";
 import classes from "./RecordsChart.module.scss";
 import {IUser} from "../../../../models/IUser.ts";
 import {formatISODate} from "../../../../services/DateService.ts";

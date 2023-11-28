@@ -1,14 +1,15 @@
 import classes from "./ActionButton.module.scss";
-import {FC} from "react";
-import {StyleType} from "../../../utils/StyleType.ts";
+import React, {FC} from "react";
+import {StyleType} from "../../../types&enums/StyleTypeEnum.ts";
 
 interface SubmitButtonProps {
     label: string;
     iconClasses: string;
     styleType: StyleType;
+    onClick: () => void;
 }
 
-const ActionButton: FC<SubmitButtonProps> = ({label, iconClasses, styleType}) => {
+const ActionButton: FC<SubmitButtonProps> = ({label, iconClasses, styleType, onClick}) => {
 
     const className = [
         classes.actionButton,
@@ -16,8 +17,13 @@ const ActionButton: FC<SubmitButtonProps> = ({label, iconClasses, styleType}) =>
         styleType === StyleType.SECONDARY ? classes.secondary : undefined
     ].join(" ");
 
+    const clickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        onClick();
+    }
+
     return (
-        <button className={className}>
+        <button className={className} onClick={clickHandler}>
             <i className={iconClasses}></i>
             <span>{label}</span>
         </button>

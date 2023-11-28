@@ -14,4 +14,5 @@
   width: 73%;
   @include flex-column;
   @include align-start-justify-between;
+  display: none;
 }

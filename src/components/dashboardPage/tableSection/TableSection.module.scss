@@ -2,7 +2,8 @@
 @import "../../../styles/Utils.scss";
 
 .tableSection {
-  width: 25%;
+  //width: 25%;
+  width: 90%;
   height: 100%;
   @include panel-styles;
   @include flex-column;

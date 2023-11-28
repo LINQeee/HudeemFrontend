@@ -1,14 +1,9 @@
-import React, {createContext, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 
 interface IUsePopup {
     popupVisible: boolean;
     openPopup: () => void;
-    PopupVisibleContext: React.Context<PopupVisibleContext | undefined>;
-}
-
-interface PopupVisibleContext {
-    popupVisible: boolean;
-    openPopup: () => void;
+    closePopup: () => void;
 }
 
 export const usePopup = (): IUsePopup => {
@@ -26,9 +21,7 @@ export const usePopup = (): IUsePopup => {
         setTimeout(() => setPopupVisible(true), 1);
     }
 
+    const closePopup = () => setPopupVisible(false);
 
-
-    return {popupVisible, openPopup, PopupVisibleContext};
+    return {popupVisible, openPopup, closePopup};
 }
-
-export const PopupVisibleContext = createContext<PopupVisibleContext | undefined>(undefined);
