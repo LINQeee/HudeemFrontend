@@ -9,32 +9,38 @@ import {useForm} from "../../../../hooks/UseForm.ts";
 
 interface RecordFormProps {
     id?: number;
-    initWeight: string;
-    initDate: string;
-    onSubmitForm: (weight: string, date: string, id?: number) => void;
+    initWeight?: string;
+    initDate?: string;
+    onSubmitForm: (weight: number, date: string, id?: number) => void;
     formLabel: string;
     buttonLabel: string;
 }
 
-const RecordForm: FC<RecordFormProps> = ({id, initWeight, initDate, onSubmitForm, formLabel, buttonLabel}) => {
+const RecordForm: FC<RecordFormProps> = ({
+                                             id,
+                                             initWeight = "",
+                                             initDate = "",
+                                             onSubmitForm,
+                                             formLabel,
+                                             buttonLabel
+                                         }) => {
 
     const [weight, setWeight] = useState<string>(initWeight);
     const [date, setDate] = useState<string>(initDate);
     const [submitted, submit] = useForm();
 
-    const submitForm = () => {
-        const valid = submit([
+    const submitForm = () => submit([
             {value: weight, type: InputType.NUMBER},
             {value: date, type: InputType.DATE}
-        ]);
-        if (valid) id ? onSubmitForm(weight, date, id) : onSubmitForm(weight, date)
-    }
+        ]).then(() => onSubmitForm(parseFloat(weight), date, id));
 
     return (
         <form className={classes.createRecordForm} onClick={e => e.stopPropagation()}>
             <SectionHeader content={formLabel}/>
-            <FormInput type={InputType.NUMBER} label={"Вес"} value={weight} setValue={setWeight} isFormSubmitted={submitted}/>
-            <FormInput type={InputType.DATE} label={"Дата"} value={date} setValue={setDate} isFormSubmitted={submitted}/>
+            <FormInput type={InputType.NUMBER} label={"Вес"} value={weight} setValue={setWeight}
+                       isFormSubmitted={submitted}/>
+            <FormInput type={InputType.DATE} label={"Дата"} value={date} setValue={setDate}
+                       isFormSubmitted={submitted}/>
             <ActionButton label={buttonLabel} iconClasses={""} styleType={StyleType.PRIMARY} onClick={submitForm}/>
         </form>
     );

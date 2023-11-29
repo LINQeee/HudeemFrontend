@@ -11,7 +11,8 @@ export const userApi = mainApi.injectEndpoints({
                 params: {
                     id: id
                 }
-            })
+            }),
+            providesTags: [{type: "Records"}]
         })
     })
 });

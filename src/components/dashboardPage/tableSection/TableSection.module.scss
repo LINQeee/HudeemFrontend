@@ -2,14 +2,14 @@
 @import "../../../styles/Utils.scss";
 
 .tableSection {
-  //width: 25%;
-  width: 90%;
+  width: 25%;
   height: 100%;
   @include panel-styles;
   @include flex-column;
   @include align-start-justify-start;
   gap: 20px;
   padding-bottom: 0;
+  position: relative;
 }
 
 .actionBox {

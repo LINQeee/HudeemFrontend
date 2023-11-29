@@ -4,14 +4,15 @@ import {FC} from "react";
 
 interface EditRecordPopupProps {
     onEditClick: () => void;
+    onDeleteClick: () => void;
 }
 
-const EditRecordPopup: FC<EditRecordPopupProps> = ({onEditClick}) => {
+const EditRecordPopup: FC<EditRecordPopupProps> = ({onEditClick, onDeleteClick}) => {
 
     return (
         <div className={classes.editRecordPopup} onClick={e => e.stopPropagation()}>
             <AsideButton content={"Изменить"} iconClasses={"fa-regular fa-pen-to-square"} onClick={onEditClick}/>
-            <AsideButton content={"Удалить"} iconClasses={"fa-regular fa-trash-can"}/>
+            <AsideButton content={"Удалить"} iconClasses={"fa-regular fa-trash-can"} onClick={onDeleteClick}/>
         </div>
     );
 };

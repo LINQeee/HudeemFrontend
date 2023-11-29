@@ -7,22 +7,27 @@ import Popup from "../../../UI/popup/Popup.tsx";
 import RecordForm from "../createRecordForm/RecordForm.tsx";
 import {useState} from "react";
 import {IRecord} from "../../../../models/IRecord.ts";
+import {useEditRecordMutation} from "../../../../api/recordApi.ts";
 
 const RecordsTable = () => {
 
-    const {data} = useFetchUserQuery(1);
-    const {popupVisible, openPopup} = usePopup();
+    const {recordDTOList, userDTO} = useFetchUserQuery(1).data!;
+    const {popupVisible, openPopup, closePopup} = usePopup();
     const [editingRecord, setEditingRecord] = useState<IRecord>();
-
-    if (data === undefined) return null;
+    const [editRecord] = useEditRecordMutation();
 
     const openRecordEditingPopup = (record: IRecord) => {
         setEditingRecord(record);
         openPopup();
     }
 
-    const submit = (weight: string, date: string, id: number) => {
-        console.log(`weight: ${weight}\ndate: ${date}\nid: ${id}`);
+    const submitEditRecordForm = (weight: number, date: string, id?: number) => {
+        if (!id) return;
+        editRecord({id: id, date: date, currentWeight: weight, userId: userDTO.id})
+            .then(result => {
+                console.log(result);
+                closePopup();
+            });
     }
 
     return (
@@ -30,7 +35,7 @@ const RecordsTable = () => {
             <TableHeader/>
             <ul>
                 {
-                    data.recordDTOList.map(
+                    recordDTOList.slice(0).reverse().map(
                         record => <TableRow
                             record={record}
                             key={record.id}
@@ -45,8 +50,8 @@ const RecordsTable = () => {
                     buttonLabel={"Сохранить"}
                     initDate={editingRecord?.date}
                     initWeight={editingRecord?.currentWeight.toString()}
-                    id={record?.id}
-                    onSubmitForm={submit}
+                    id={editingRecord?.id}
+                    onSubmitForm={submitEditRecordForm}
                 />
             </Popup>
         </div>

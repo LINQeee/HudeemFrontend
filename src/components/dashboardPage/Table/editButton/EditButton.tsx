@@ -3,27 +3,26 @@ import {usePopup} from "../../../../hooks/UsePopup.ts";
 import EditRecordPopup from "../editRecordPopup/EditRecordPopup.tsx";
 import Popup from "../../../UI/popup/Popup.tsx";
 import {FC} from "react";
-import {IRecord} from "../../../../models/IRecord.ts";
 
 interface EditButtonProps {
-    openRecordPopup: (record: IRecord) => void;
-    record: IRecord;
+    openRecordPopup: () => void;
+    deleteRecord: () => void;
 }
 
-const EditButton: FC<EditButtonProps> = ({openRecordPopup, record}) => {
+const EditButton: FC<EditButtonProps> = ({openRecordPopup, deleteRecord}) => {
 
     const {popupVisible, openPopup, closePopup} = usePopup();
 
     const openFormAndClosePopup = () => {
         closePopup();
-        openRecordPopup(record);
+        openRecordPopup();
     }
 
     return (
         <div className={classes.editButton} onClick={openPopup}>
             <i className="fa-regular fa-ellipsis"></i>
             <Popup popupVisible={popupVisible}>
-                <EditRecordPopup onEditClick={openFormAndClosePopup}/>
+                <EditRecordPopup onEditClick={openFormAndClosePopup} onDeleteClick={deleteRecord}/>
             </Popup>
         </div>
     );

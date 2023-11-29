@@ -5,7 +5,7 @@ interface AsideButtonProps {
     content: string;
     iconClasses: string;
     active?: boolean;
-    onClick?: () => void;
+    onClick: () => void;
 }
 
 const AsideButton: FC<AsideButtonProps> = ({content, iconClasses, active, onClick }) => {
