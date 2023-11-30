@@ -1,6 +1,6 @@
 import classes from "./ActionButton.module.scss";
 import React, {FC} from "react";
-import {StyleType} from "../../../types&enums/StyleTypeEnum.ts";
+import {StyleType} from "../../../utils/enums/StyleTypeEnum.ts";
 
 interface SubmitButtonProps {
     label: string;

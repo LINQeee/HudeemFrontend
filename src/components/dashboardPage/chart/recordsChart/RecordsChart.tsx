@@ -9,11 +9,11 @@ import {
 } from "recharts";
 import {IRecord} from "../../../../models/IRecord.ts";
 import {FC} from "react";
-import {IRecordChartData} from "../../../../utils/RecordType.ts";
 import classes from "./RecordsChart.module.scss";
 import {IUser} from "../../../../models/IUser.ts";
 import {formatISODate} from "../../../../services/DateService.ts";
 import CustomChartTooltip from "../customChartTooltip/CustomChartTooltip.tsx";
+import {IRecordChartData} from "../../../../utils/types/RecordType.ts";
 
 interface RecordsChartProps {
     records: IRecord[];
@@ -30,8 +30,8 @@ const RecordsChart: FC<RecordsChartProps> = ({records, user}) => {
     }));
 
     return (
-        <ResponsiveContainer className={classes.recordsChart} key={new Date().toISOString()}>
-            <LineChart data={data} >
+        <ResponsiveContainer className={classes.recordsChart}>
+            <LineChart data={data}>
                 <CartesianGrid vertical={false} stroke="#F5F7F9"/>
                 <XAxis
                     dataKey="date"
@@ -42,6 +42,7 @@ const RecordsChart: FC<RecordsChartProps> = ({records, user}) => {
                     tickMargin={18}
                     tickFormatter={value => formatISODate(value)}
                     interval={1}
+                    padding={{right: 20}}
                 />
                 <YAxis
                     dataKey="value"

@@ -3,6 +3,7 @@ import {useFetchUserQuery} from "./api/userApi.ts";
 import AsideBar from "./components/asideBar/AsideBar.tsx";
 import Header from "./components/headerBar/header/Header.tsx";
 import Dashboard from "./components/dashboardPage/dashboard/Dashboard.tsx";
+import NotificationBox from "./components/UI/notificationBox/NotificationBox.tsx";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
             <AsideBar/>
             <Header/>
             <Dashboard/>
+            <NotificationBox/>
         </>
     )
 }

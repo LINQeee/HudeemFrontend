@@ -2,12 +2,12 @@ import classes from "./TableSection.module.scss";
 import SectionHeader from "../../UI/sectionHeader/SectionHeader.tsx";
 import ActionButton from "../../UI/actionButton/ActionButton.tsx";
 import RecordsTable from "../Table/RecordsTable/RecordsTable.tsx";
-import {StyleType} from "../../../types&enums/StyleTypeEnum.ts";
 import Popup from "../../UI/popup/Popup.tsx";
 import {usePopup} from "../../../hooks/UsePopup.ts";
 import RecordForm from "../Table/createRecordForm/RecordForm.tsx";
 import {useCreateRecordMutation} from "../../../api/recordApi.ts";
 import {useFetchUserQuery} from "../../../api/userApi.ts";
+import {StyleType} from "../../../utils/enums/StyleTypeEnum.ts";
 
 const TableSection = () => {
 
@@ -15,8 +15,12 @@ const TableSection = () => {
     const [createRecordTrigger] = useCreateRecordMutation();
     const {id: userId} = useFetchUserQuery(1)!.data!.userDTO;
 
-    const submitCreateRecordForm = (weight: number, date: string) =>
-        createRecordTrigger({userId: userId, date: date, currentWeight: weight}).then(response => console.log(response)).finally(closePopup);
+    const submitCreateRecordForm = (weight: number, date: string) => {
+        createRecordTrigger({userId: userId, date: date, currentWeight: weight}).then(() => {
+            closePopup();
+        });
+
+    }
 
     return (
         <div className={classes.tableSection}>

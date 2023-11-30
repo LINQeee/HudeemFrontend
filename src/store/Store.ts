@@ -1,15 +1,18 @@
 import {combineReducers} from "redux";
 import {configureStore} from "@reduxjs/toolkit";
 import {mainApi} from "../api/mainApi.ts";
+import {apiRequestsMiddleware} from "../middlewares/ApiRequestsMiddleware.ts";
+import notificationReducer from "./reducers/NotificationSlice.ts";
 
 const rootReducer = combineReducers({
-    [mainApi.reducerPath]: mainApi.reducer
+    [mainApi.reducerPath]: mainApi.reducer,
+    notificationReducer
 })
 
 export const setupStore = () => {
     return configureStore({
         reducer: rootReducer,
-        middleware: getDefaultMiddleware => getDefaultMiddleware().concat(mainApi.middleware)
+        middleware: getDefaultMiddleware => getDefaultMiddleware().concat(mainApi.middleware).concat(apiRequestsMiddleware)
     })
 }
 

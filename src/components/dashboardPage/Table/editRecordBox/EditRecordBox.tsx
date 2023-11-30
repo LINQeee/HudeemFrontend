@@ -1,4 +1,4 @@
-import classes from "./EditRecordPopup.module.scss";
+import classes from "./EditRecordBox.module.scss";
 import AsideButton from "../../../UI/asideButton/AsideButton.tsx";
 import {FC} from "react";
 
@@ -7,7 +7,7 @@ interface EditRecordPopupProps {
     onDeleteClick: () => void;
 }
 
-const EditRecordPopup: FC<EditRecordPopupProps> = ({onEditClick, onDeleteClick}) => {
+const EditRecordBox: FC<EditRecordPopupProps> = ({onEditClick, onDeleteClick}) => {
 
     return (
         <div className={classes.editRecordPopup} onClick={e => e.stopPropagation()}>
@@ -17,4 +17,4 @@ const EditRecordPopup: FC<EditRecordPopupProps> = ({onEditClick, onDeleteClick})
     );
 };
 
-export default EditRecordPopup;
+export default EditRecordBox;

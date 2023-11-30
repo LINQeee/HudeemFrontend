@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {validateAllFields} from "../services/ValidateService.ts";
-import {IValidateField} from "../types&enums/ValidateInputType.ts";
+import {IValidateField} from "../utils/types/ValidateInputType.ts";
 
 type IUseForm = [
     boolean,

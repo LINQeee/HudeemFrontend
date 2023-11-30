@@ -1,6 +1,6 @@
 import classes from "./TableRow.module.scss";
 import Checkbox from "../../../UI/checkbox/Checkbox.tsx";
-import EditButton from "../editButton/EditButton.tsx";
+import EditRecordButton from "../editRecordButton/EditRecordButton.tsx";
 import {FC} from "react";
 import {formatNumeralFullDate} from "../../../../services/DateService.ts";
 import {IRecord} from "../../../../models/IRecord.ts";
@@ -20,7 +20,7 @@ const TableRow: FC<TableRowProps> = ({record, openEditingPopup}) => {
             <Checkbox/>
             <span>{formatNumeralFullDate(record.date)}</span>
             <span>{`${record.currentWeight}кг`}</span>
-            <EditButton openRecordPopup={() => openEditingPopup(record)} deleteRecord={() => deleteRecord(record.id)}/>
+            <EditRecordButton openRecordPopup={() => openEditingPopup(record)} deleteRecord={() => deleteRecord(record.id)}/>
         </div>
     );
 };

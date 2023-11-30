@@ -1,0 +1,11 @@
+@import "../../../styles/ThemeVariables.scss";
+@import "../../../styles/Utils.scss";
+
+.notificationBox {
+  position: absolute;
+  @include flex-column;
+  @include align-start-justify-start;
+  align-self: center;
+  top: 10px;
+  gap: 15px;
+}

@@ -1,8 +1,8 @@
 import classes from "./FormInput.module.scss";
 import React, {Dispatch, FC, SetStateAction} from "react";
-import {InputType} from "../../../types&enums/InputTypeEnum.ts";
-import {IInputError} from "../../../types&enums/InputErrorType.ts";
 import {validateField} from "../../../services/ValidateService.ts";
+import {InputType} from "../../../utils/enums/InputTypeEnum.ts";
+import {IInputError} from "../../../utils/types/InputErrorType.ts";
 
 interface TextInputProps {
     type: InputType;

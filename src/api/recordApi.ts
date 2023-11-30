@@ -8,7 +8,6 @@ export const recordApi = mainApi.injectEndpoints({
                 return {
                     url: '/record',
                     method: 'POST',
-                    responseHandler: "text",
                     body
                 }
             },
@@ -19,7 +18,6 @@ export const recordApi = mainApi.injectEndpoints({
                 return {
                     url: "/record",
                     method: "POST",
-                    responseHandler: "text",
                     body
                 }
             },
@@ -30,7 +28,6 @@ export const recordApi = mainApi.injectEndpoints({
                 return {
                     url: "/record",
                     method: "DELETE",
-                    responseHandler: "text",
                     params: {id: id}
                 }
             },

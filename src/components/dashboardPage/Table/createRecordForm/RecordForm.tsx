@@ -3,9 +3,9 @@ import FormInput from "../../../UI/formInput/FormInput.tsx";
 import {FC, useState} from "react";
 import SectionHeader from "../../../UI/sectionHeader/SectionHeader.tsx";
 import ActionButton from "../../../UI/actionButton/ActionButton.tsx";
-import {InputType} from "../../../../types&enums/InputTypeEnum.ts";
-import {StyleType} from "../../../../types&enums/StyleTypeEnum.ts";
 import {useForm} from "../../../../hooks/UseForm.ts";
+import {InputType} from "../../../../utils/enums/InputTypeEnum.ts";
+import {StyleType} from "../../../../utils/enums/StyleTypeEnum.ts";
 
 interface RecordFormProps {
     id?: number;

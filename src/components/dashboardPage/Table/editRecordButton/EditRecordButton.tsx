@@ -1,6 +1,6 @@
-import classes from "./EditButton.module.scss";
+import classes from "./EditRecordButton.module.scss";
 import {usePopup} from "../../../../hooks/UsePopup.ts";
-import EditRecordPopup from "../editRecordPopup/EditRecordPopup.tsx";
+import EditRecordBox from "../editRecordBox/EditRecordBox.tsx";
 import Popup from "../../../UI/popup/Popup.tsx";
 import {FC} from "react";
 
@@ -9,7 +9,7 @@ interface EditButtonProps {
     deleteRecord: () => void;
 }
 
-const EditButton: FC<EditButtonProps> = ({openRecordPopup, deleteRecord}) => {
+const EditRecordButton: FC<EditButtonProps> = ({openRecordPopup, deleteRecord}) => {
 
     const {popupVisible, openPopup, closePopup} = usePopup();
 
@@ -22,10 +22,10 @@ const EditButton: FC<EditButtonProps> = ({openRecordPopup, deleteRecord}) => {
         <div className={classes.editButton} onClick={openPopup}>
             <i className="fa-regular fa-ellipsis"></i>
             <Popup popupVisible={popupVisible}>
-                <EditRecordPopup onEditClick={openFormAndClosePopup} onDeleteClick={deleteRecord}/>
+                <EditRecordBox onEditClick={openFormAndClosePopup} onDeleteClick={deleteRecord}/>
             </Popup>
         </div>
     );
 };
 
-export default EditButton;
+export default EditRecordButton;

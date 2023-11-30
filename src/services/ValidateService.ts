@@ -1,6 +1,6 @@
-import {IInputError} from "../types&enums/InputErrorType.ts";
-import {InputType} from "../types&enums/InputTypeEnum.ts";
-import {IValidateField} from "../types&enums/ValidateInputType.ts";
+import {IValidateField} from "../utils/types/ValidateInputType.ts";
+import {InputType} from "../utils/enums/InputTypeEnum.ts";
+import {IInputError} from "../utils/types/InputErrorType.ts";
 
 export const validateField = ({value, type}: IValidateField): IInputError => {
     let inputError: IInputError = {isError: false, errorMessage: ""};
