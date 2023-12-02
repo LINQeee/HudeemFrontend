@@ -39,9 +39,9 @@ const RecordsChart: FC<RecordsChartProps> = ({records, user}) => {
                     tickLine={false}
                     fontSize={15}
                     stroke="#A0B5BB"
-                    tickMargin={18}
+                    tickMargin={16}
                     tickFormatter={value => formatISODate(value)}
-                    interval={1}
+                    interval={Math.round(records.length * 0.06)}
                     padding={{right: 20}}
                 />
                 <YAxis

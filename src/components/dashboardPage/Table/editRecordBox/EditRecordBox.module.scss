@@ -6,10 +6,17 @@
   width: 150px;
   background: red;
   z-index: 100;
-  top: 100%;
   right: 0;
   @include panel-styles;
   @include flex-column;
   @include align-start-justify-between;
   padding: 5px;
+}
+
+.notOverflows {
+  top: 100%;
+}
+
+.overflows {
+  bottom: 100%;
 }
