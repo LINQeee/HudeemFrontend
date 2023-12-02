@@ -6,6 +6,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "types": ["vite/client", "react", "react-dom"],
+    "outDir": "dist",
 
     /* Bundler mode */
     "moduleResolution": "bundler",
