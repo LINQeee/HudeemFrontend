@@ -11,12 +11,9 @@
   @include flex-column;
   @include align-start-justify-between;
   padding: 5px;
-}
-
-.notOverflows {
   top: 100%;
-}
 
-.overflows {
-  bottom: 100%;
+  ul:has(&) > :nth-last-child(-n + 2) & { //get nearest parent list, choose  its' last 2 rows and style popup inside it
+    top: -400%;
+  }
 }
