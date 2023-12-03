@@ -14,6 +14,7 @@ import {IUser} from "../../../../models/IUser.ts";
 import {formatISODate} from "../../../../services/DateService.ts";
 import CustomChartTooltip from "../customChartTooltip/CustomChartTooltip.tsx";
 import {IRecordChartData} from "../../../../utils/types/RecordType.ts";
+import {useScreenResponsive} from "../../../../hooks/UseScreenResponsive.ts";
 
 interface RecordsChartProps {
     records: IRecord[];
@@ -29,6 +30,8 @@ const RecordsChart: FC<RecordsChartProps> = ({records, user}) => {
         value: record.currentWeight,
     }));
 
+    const xAxisInterval = useScreenResponsive(data.length, 250);
+
     return (
         <ResponsiveContainer className={classes.recordsChart}>
             <LineChart data={data}>
@@ -41,7 +44,7 @@ const RecordsChart: FC<RecordsChartProps> = ({records, user}) => {
                     stroke="#A0B5BB"
                     tickMargin={16}
                     tickFormatter={value => formatISODate(value)}
-                    interval={Math.round(records.length * 0.06)}
+                    interval={xAxisInterval}
                     padding={{right: 20}}
                 />
                 <YAxis
@@ -54,7 +57,7 @@ const RecordsChart: FC<RecordsChartProps> = ({records, user}) => {
                     fontSize={15}
                     stroke="#A0B5BB"
                 />
-                <Tooltip cursor={{stroke: "#F5F7F9", strokeWidth: 1.5}} content={<CustomChartTooltip />}/>
+                <Tooltip cursor={{stroke: "#F5F7F9", strokeWidth: 1.5}} content={<CustomChartTooltip/>}/>
                 <Line
                     type="monotone"
                     dataKey="value"
