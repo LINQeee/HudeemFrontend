@@ -17,7 +17,7 @@ export const useForm = (onSubmitForm: () => Promise<IInputError>): IUseForm => {
         const validateResult = validateAllFields(fields);
 
         if (!validateResult.length) {
-            onSubmitForm().then(error => {addError(error); console.log(error)});
+            onSubmitForm().then(error => {addError(error)});
         }
         else {
             addErrors(validateResult);
