@@ -1,7 +1,8 @@
 import classes from "./CardsBox.module.scss";
-import StatsCard, {IconColor} from "./statsCard/StatsCard.tsx";
+import StatsCard from "./statsCard/StatsCard.tsx";
 import {useFetchUserQuery} from "../../../api/userApi.ts";
 import {formatNumeralFullDate} from "../../../services/DateService.ts";
+import {IconColor} from "../../../utils/enums/IconColorEnum.ts";
 
 const CardsBox = () => {
 

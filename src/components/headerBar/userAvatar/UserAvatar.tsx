@@ -10,7 +10,7 @@ const UserAvatar = () => {
 
     return (
         <div className={classes.userAvatar}>
-            <img src={avatar}/>
+            <img src={avatar} alt={"avatar"}/>
             <div className={classes.userInfo}>
                 <span>Default member</span>
                 <h6>{data.userDTO.username}</h6>

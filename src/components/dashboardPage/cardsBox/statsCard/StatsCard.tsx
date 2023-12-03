@@ -1,12 +1,6 @@
 import classes from "./StatsCard.module.scss";
 import {FC} from "react";
-
-export enum IconColor {
-    GREEN,
-    YELLOW,
-    BLUE,
-    ORANGE
-}
+import {IconColor} from "../../../../utils/enums/IconColorEnum.ts";
 
 interface StatsCardProps {
     label: string;
