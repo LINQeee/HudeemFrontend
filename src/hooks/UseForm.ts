@@ -1,24 +1,34 @@
 import {useState} from "react";
-import {validateAllFields} from "../services/ValidateService.ts";
+import {validateAllFields} from "../services/ValidationService.ts";
 import {IValidateField} from "../utils/types/ValidateInputType.ts";
+import {IInputError} from "../utils/types/InputErrorType.ts";
 
 type IUseForm = [
-    boolean,
-    (fields: IValidateField[]) => Promise<boolean>
+    IInputError[],
+    (error: IInputError) => void,
+    (fields: IValidateField[]) => void
 ]
 
-export const useForm = (): IUseForm => {
-    const [submitted, setSubmitted] = useState<boolean>(false);
+export const useForm = (onSubmitForm: () => Promise<IInputError>): IUseForm => {
 
-    const submit = (fields: IValidateField[]): Promise<boolean> => new Promise((resolve, reject) => {
-        setSubmitted(true);
-        const valid = validateAllFields(fields);
-        if (valid) {
-            setSubmitted(false);
-            resolve(valid);
+    const [errors, setErrors] = useState<IInputError[]>([]);
+
+    const submit = (fields: IValidateField[]) => {
+        const validateResult = validateAllFields(fields);
+
+        if (!validateResult.length) {
+            onSubmitForm().then(error => {addError(error); console.log(error)});
         }
-        else reject(valid);
-    });
+        else {
+            addErrors(validateResult);
+        }
+    }
 
-    return [submitted, submit];
+    const addError = (error: IInputError) => setErrors([...errors, error]);
+
+    const addErrors = (newErrors: IInputError[]) => setErrors([...errors, ...newErrors]);
+
+    const removeError = (error: IInputError) => setErrors([...errors].filter(err => err !== error));
+
+    return [errors, removeError, submit];
 }

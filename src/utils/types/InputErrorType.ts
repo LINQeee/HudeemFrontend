@@ -1,4 +1,6 @@
+import {InputType} from "../enums/InputTypeEnum.ts";
+
 export interface IInputError {
-    isError: boolean;
+    inputType: InputType;
     errorMessage: string;
 }

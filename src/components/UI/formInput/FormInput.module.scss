@@ -58,7 +58,8 @@
     color: $error;
     bottom: -20px;
     font-size: 14px;
-    height: 4px;
+    line-height: 13px;
+    height: 7px;
   }
 }
 
@@ -71,7 +72,7 @@
   i {
     position: absolute;
     right: 12px;
-    bottom: 17px;
+    bottom: 20px;
     color: $header;
     pointer-events: none;
   }

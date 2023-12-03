@@ -1,6 +1,5 @@
 import classes from "./FormInput.module.scss";
 import React, {Dispatch, FC, SetStateAction} from "react";
-import {validateField} from "../../../services/ValidateService.ts";
 import {InputType} from "../../../utils/enums/InputTypeEnum.ts";
 import {IInputError} from "../../../utils/types/InputErrorType.ts";
 
@@ -9,18 +8,22 @@ interface TextInputProps {
     label: string;
     value: string;
     setValue: Dispatch<SetStateAction<string>>;
-    isFormSubmitted: boolean;
+    error: IInputError | undefined;
+    removeError: (error: IInputError) => void;
 }
 
-const FormInput: FC<TextInputProps> = ({type, label, value, setValue, isFormSubmitted}) => {
+const FormInput: FC<TextInputProps> = ({type, label, value, setValue, error, removeError}) => {
 
-    const validateResult: IInputError = validateField({value, type});
-
-    const inputClassName = [classes.textInput, validateResult.isError && isFormSubmitted ? classes.error : undefined].join(" ");
+    const inputClassName = [classes.textInput, error ? classes.error : undefined].join(" ");
 
     const dateClickHandler = (event: React.MouseEvent<HTMLInputElement>) => {
         if (event.currentTarget.type !== InputType.DATE) return;
         event.currentTarget.showPicker();
+    }
+
+    const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(event.currentTarget.value);
+        if (error) removeError(error);
     }
 
     return (
@@ -30,11 +33,11 @@ const FormInput: FC<TextInputProps> = ({type, label, value, setValue, isFormSubm
                 type={type}
                 required
                 value={value}
-                onChange={event => setValue(event.target.value)}
+                onChange={changeHandler}
                 onClick={dateClickHandler}
             />
             { type === InputType.DATE && <i className="fa-regular fa-calendar-days"></i>}
-            <span>{validateResult.errorMessage}</span>
+            <span>{error?.errorMessage}</span>
         </div>
     );
 };

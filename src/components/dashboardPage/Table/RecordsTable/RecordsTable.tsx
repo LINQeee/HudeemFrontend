@@ -7,6 +7,8 @@ import Popup from "../../../UI/popup/Popup.tsx";
 import RecordForm from "../createRecordForm/RecordForm.tsx";
 import {useState} from "react";
 import {IRecord} from "../../../../models/IRecord.ts";
+import {IInputError} from "../../../../utils/types/InputErrorType.ts";
+import {editRecord} from "../../../../services/RecordApiService.ts";
 import {useEditRecordMutation} from "../../../../api/recordApi.ts";
 
 const RecordsTable = () => {
@@ -14,20 +16,19 @@ const RecordsTable = () => {
     const {recordDTOList, userDTO} = useFetchUserQuery(1).data!;
     const {popupVisible, openPopup, closePopup} = usePopup();
     const [editingRecord, setEditingRecord] = useState<IRecord>();
-    const [editRecord] = useEditRecordMutation();
+    const [editRecordTrigger] = useEditRecordMutation();
 
     const openRecordEditingPopup = (record: IRecord) => {
         setEditingRecord(record);
         openPopup();
     }
 
-    const submitEditRecordForm = (weight: number, date: string, id?: number) => {
-        if (!id) return;
-        editRecord({id: id, date: date, currentWeight: weight, userId: userDTO.id})
-            .then(result => {
-                console.log(result);
-                closePopup();
-            });
+    const submitEditRecordForm = (weight: number, date: string, id?: number): Promise<IInputError> => {
+
+        if (!id) throw new Error("id is required");
+
+        const editedRecord: IRecord = {id: id, currentWeight: weight, date: date, userId: userDTO.id};
+        return editRecord(editedRecord, closePopup, editRecordTrigger);
     }
 
     return (

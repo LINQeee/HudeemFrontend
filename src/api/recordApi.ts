@@ -1,5 +1,13 @@
 import {mainApi} from "./mainApi.ts";
 import {IRecord} from "../models/IRecord.ts";
+import {
+    BaseQueryFn,
+    FetchArgs,
+    FetchBaseQueryError,
+    FetchBaseQueryMeta,
+    MutationDefinition
+} from "@reduxjs/toolkit/query";
+import {MutationTrigger} from "@reduxjs/toolkit/dist/query/react/buildHooks";
 
 export const recordApi = mainApi.injectEndpoints({
     endpoints: build => ({
@@ -18,6 +26,7 @@ export const recordApi = mainApi.injectEndpoints({
                 return {
                     url: "/record",
                     method: "POST",
+                    responseHandler: "text",
                     body
                 }
             },
@@ -28,6 +37,7 @@ export const recordApi = mainApi.injectEndpoints({
                 return {
                     url: "/record",
                     method: "DELETE",
+                    responseHandler: "text",
                     params: {id: id}
                 }
             },
@@ -37,3 +47,5 @@ export const recordApi = mainApi.injectEndpoints({
 });
 
 export const {useEditRecordMutation, useCreateRecordMutation, useDeleteRecordMutation} = recordApi;
+export type EditRecordTrigger = MutationTrigger<MutationDefinition<IRecord, BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, object, FetchBaseQueryMeta>, "Records", string, "mainApi">>;
+export type CreateRecordTrigger = MutationTrigger<MutationDefinition<Omit<IRecord, "id">, BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, object, FetchBaseQueryMeta>, "Records", string, "mainApi">>;

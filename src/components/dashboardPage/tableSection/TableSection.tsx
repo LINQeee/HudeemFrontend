@@ -8,6 +8,9 @@ import RecordForm from "../Table/createRecordForm/RecordForm.tsx";
 import {useCreateRecordMutation} from "../../../api/recordApi.ts";
 import {useFetchUserQuery} from "../../../api/userApi.ts";
 import {StyleType} from "../../../utils/enums/StyleTypeEnum.ts";
+import {IInputError} from "../../../utils/types/InputErrorType.ts";
+import {createRecord} from "../../../services/RecordApiService.ts";
+import {IRecord} from "../../../models/IRecord.ts";
 
 const TableSection = () => {
 
@@ -15,11 +18,9 @@ const TableSection = () => {
     const [createRecordTrigger] = useCreateRecordMutation();
     const {id: userId} = useFetchUserQuery(1)!.data!.userDTO;
 
-    const submitCreateRecordForm = (weight: number, date: string) => {
-        createRecordTrigger({userId: userId, date: date, currentWeight: weight}).then(() => {
-            closePopup();
-        });
-
+    const submitCreateRecordForm = (weight: number, date: string): Promise<IInputError> => {
+        const newRecord:Omit<IRecord, "id"> = {date: date, currentWeight: weight, userId: userId};
+        return createRecord(newRecord, closePopup, createRecordTrigger);
     }
 
     return (
