@@ -1,0 +1,20 @@
+@import "../../../../styles/ThemeVariables.scss";
+@import "../../../../styles/Utils.scss";
+
+.button {
+  @include flex-all-center;
+  background: transparent;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+
+  > i {
+    scale: 1.2;
+    color: $text;
+    transition: all .3s ease;
+
+    &:hover {
+      color: $error;
+    }
+  }
+}

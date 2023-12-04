@@ -8,8 +8,9 @@ import RecordForm from "../createRecordForm/RecordForm.tsx";
 import {useState} from "react";
 import {IRecord} from "../../../../models/IRecord.ts";
 import {IInputError} from "../../../../utils/types/InputErrorType.ts";
-import {editRecord} from "../../../../services/RecordApiService.ts";
-import {useEditRecordMutation} from "../../../../api/recordApi.ts";
+import {deleteRecords, editRecord} from "../../../../services/RecordApiService.ts";
+import {useDeleteRecordMutation, useEditRecordMutation} from "../../../../api/recordApi.ts";
+import {useArrayState} from "../../../../hooks/UseArrayState.ts";
 
 const RecordsTable = () => {
 
@@ -17,6 +18,8 @@ const RecordsTable = () => {
     const {popupVisible, openPopup, closePopup} = usePopup();
     const [editingRecord, setEditingRecord] = useState<IRecord>();
     const [editRecordTrigger] = useEditRecordMutation();
+    const [deleteRecordTrigger] = useDeleteRecordMutation();
+    const [selectedRecords, selectRecord, unselectRecord, , clearSelectedRecords] = useArrayState<IRecord>([]);
 
     const openRecordEditingPopup = (record: IRecord) => {
         setEditingRecord(record);
@@ -31,9 +34,11 @@ const RecordsTable = () => {
         return editRecord(editedRecord, closePopup, editRecordTrigger);
     }
 
+    const deleteSelectedRecords = () => deleteRecords(selectedRecords, clearSelectedRecords, deleteRecordTrigger);
+
     return (
         <div className={classes.recordsTable}>
-            <TableHeader/>
+            <TableHeader enableDeleteButton={selectedRecords.length > 0} onDeleteButtonClick={deleteSelectedRecords}/>
             <ul>
                 {
                     recordDTOList.slice(0).reverse().map(
@@ -41,6 +46,9 @@ const RecordsTable = () => {
                             record={record}
                             key={record.id}
                             openEditingPopup={openRecordEditingPopup}
+                            selectRecord={selectRecord}
+                            unselectRecord={unselectRecord}
+                            selected={selectedRecords.some(selected => selected.id === record.id)}
                         />
                     )
                 }

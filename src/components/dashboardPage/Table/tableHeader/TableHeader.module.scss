@@ -19,4 +19,9 @@
       margin-left: -5px;
     }
   }
+
+  > button:first-child {
+    position: absolute;
+    left: 10px;
+  }
 }

@@ -50,3 +50,4 @@ export const recordApi = mainApi.injectEndpoints({
 export const {useEditRecordMutation, useCreateRecordMutation, useDeleteRecordMutation} = recordApi;
 export type EditRecordTrigger = MutationTrigger<MutationDefinition<IRecord, BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, object, FetchBaseQueryMeta>, "Records", string, "mainApi">>;
 export type CreateRecordTrigger = MutationTrigger<MutationDefinition<Omit<IRecord, "id">, BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, object, FetchBaseQueryMeta>, "Records", string, "mainApi">>;
+export type DeleteRecordTrigger = MutationTrigger<MutationDefinition<number, BaseQueryFn<string | FetchArgs, unknown, FetchBaseQueryError, object, FetchBaseQueryMeta>, "Records", string, "mainApi">>;
