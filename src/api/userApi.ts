@@ -10,7 +10,8 @@ export const userApi = mainApi.injectEndpoints({
                 url: "/summary",
                 params: {
                     id: id
-                }
+                },
+                responseHandler: "content-type"
             }),
             providesTags: [{type: "Records"}]
         })

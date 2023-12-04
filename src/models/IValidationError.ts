@@ -6,5 +6,5 @@ export interface IValidationError {
     type: "VALIDATION";
 }
 
-export const isValidationError = (object: IValidationError): object is IValidationError =>
+export const isValidationError = (object: any): object is IValidationError =>
     "inputFieldType" in object && "msg" in object && "type" in object && object.type === "VALIDATION";
