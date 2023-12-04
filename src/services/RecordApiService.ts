@@ -25,7 +25,6 @@ export const createRecord = (newRecord: Omit<IRecord, "id">, callback: () => voi
 });
 
 const rejectValidationError = (error: FetchBaseQueryError, reject: (value: (IInputError | PromiseLike<IInputError>)) => void) => {
-    console.log(error);
     if (typeof error.data === 'object' && isValidationError(error.data as IValidationError)) {
         const validationError = error.data as IValidationError;
         reject({inputType: parseResponseInputToInput(validationError.inputFieldType), errorMessage: validationError.msg});

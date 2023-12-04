@@ -11,6 +11,7 @@ export const apiRequestsMiddleware: Middleware = (store) => (next) => (action) =
             id: new Date().toISOString()
         }));
     } else if (action.type.endsWith('/rejected')) {
+        console.log(action);
         store.dispatch(notificationSlice.actions.openNotification({
             advice: "Some error occurred",
             description: "Try again later!",

@@ -30,9 +30,7 @@ const RecordForm: FC<RecordFormProps> = ({
     const [weight, setWeight] = useState<string>(initWeight);
     const [date, setDate] = useState<string>(initDate);
 
-    const submitEvent = () => {
-        return onSubmitForm(parseFloat(weight), date, id);
-    }
+    const submitEvent = () => onSubmitForm(parseFloat(weight), date, id);
 
     const [errors, removeError, submit] = useForm(submitEvent);
 
