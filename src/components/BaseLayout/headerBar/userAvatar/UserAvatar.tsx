@@ -1,6 +1,6 @@
 import classes from "./UserAvatar.module.scss";
-import avatar from "../../../assets/avatar.jpg";
-import {useFetchUserQuery} from "../../../api/userApi.ts";
+import avatar from "../../../../assets/avatar.jpg";
+import {useFetchUserQuery} from "../../../../api/userApi.ts";
 
 const UserAvatar = () => {
 

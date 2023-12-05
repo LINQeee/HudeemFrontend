@@ -16,10 +16,14 @@ const TableSection = () => {
 
     const {popupVisible, openPopup, closePopup} = usePopup();
     const [createRecordTrigger] = useCreateRecordMutation();
-    const {id: userId} = useFetchUserQuery(1)!.data!.userDTO;
+    const {data} = useFetchUserQuery(1);
+
+    if (data === undefined) return null;
+
+
 
     const submitCreateRecordForm = (weight: number, date: string): Promise<IInputError> => {
-        const newRecord:Omit<IRecord, "id"> = {date: date, currentWeight: weight, userId: userId};
+        const newRecord:Omit<IRecord, "id"> = {date: date, currentWeight: weight, userId: data.userDTO.id};
         return createRecord(newRecord, closePopup, createRecordTrigger);
     }
 

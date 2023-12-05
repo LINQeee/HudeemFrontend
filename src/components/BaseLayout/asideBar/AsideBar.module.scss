@@ -1,5 +1,5 @@
-@import "../../styles/ThemeVariables.scss";
-@import "../../styles/Utils.scss";
+@import "../../../styles/ThemeVariables";
+@import "../../../styles/Utils";
 
 .asideBar {
   @include flex-column;

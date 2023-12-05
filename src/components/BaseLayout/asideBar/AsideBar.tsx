@@ -1,5 +1,5 @@
 import classes from "./AsideBar.module.scss";
-import AsideButton from "../UI/asideButton/AsideButton.tsx";
+import AsideButton from "../../UI/asideButton/AsideButton.tsx";
 
 const AsideBar = () => {
     return (
