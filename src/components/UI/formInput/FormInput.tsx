@@ -28,8 +28,9 @@ const FormInput: FC<TextInputProps> = memo(({type, label, value, setValue, error
 
     return (
         <div className={inputClassName}>
-            <label>{label}</label>
+            <label htmlFor={new Date().toISOString()}>{label}</label>
             <input
+                id={new Date().toISOString()}
                 type={type}
                 required
                 value={value}

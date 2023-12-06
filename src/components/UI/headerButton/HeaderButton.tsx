@@ -7,7 +7,7 @@ interface HeaderButtonProps {
 
 const HeaderButton: FC<HeaderButtonProps> = memo(({iconClasses}) => {
     return (
-        <button className={classes.headerButton}>
+        <button title={"notifications"} className={classes.headerButton}>
             <i className={iconClasses}></i>
         </button>
     );

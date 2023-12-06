@@ -11,7 +11,7 @@ function App() {
         <HashRouter>
             <BaseLayout/>
             <Routes>
-                <Route path={"dashboard"} element={<Dashboard/>}/>
+                <Route path={"dashboard"} element={<Dashboard/>} />
             </Routes>
         </HashRouter>
     )
