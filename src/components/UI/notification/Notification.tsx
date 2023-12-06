@@ -1,6 +1,6 @@
 import classes from "./Notification.module.scss";
 import {NotificationType} from "../../../utils/enums/NotificationTypeEnum.ts";
-import {FC, useEffect} from "react";
+import {FC, memo, useEffect} from "react";
 import {notificationSlice} from "../../../store/reducers/NotificationSlice.ts";
 import "../notificationBox/NotificationTransitions.scss";
 import {useAppDispatch} from "../../../hooks/Redux.ts";
@@ -10,7 +10,7 @@ interface NotificationProps {
     notification: INotification;
 }
 
-const Notification: FC<NotificationProps> = ({notification}) => {
+const Notification: FC<NotificationProps> = memo(({notification}) => {
 
     const {description, advice, type, id} = notification;
     const dispatch = useAppDispatch();
@@ -39,6 +39,6 @@ const Notification: FC<NotificationProps> = ({notification}) => {
             </div>
         </div>
     );
-};
+});
 
 export default Notification;

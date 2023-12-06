@@ -5,7 +5,7 @@ import TableRow from "../tableRow/TableRow.tsx";
 import {usePopup} from "../../../../hooks/UsePopup.ts";
 import Popup from "../../../UI/popup/Popup.tsx";
 import RecordForm from "../createRecordForm/RecordForm.tsx";
-import {useState} from "react";
+import {useCallback, useState} from "react";
 import {IRecord} from "../../../../models/IRecord.ts";
 import {IInputError} from "../../../../utils/types/InputErrorType.ts";
 import {deleteRecords, editRecord} from "../../../../services/RecordApiService.ts";
@@ -34,7 +34,8 @@ const RecordsTable = () => {
         return editRecord(editedRecord, closePopup, editRecordTrigger);
     }
 
-    const deleteSelectedRecords = () => deleteRecords(selectedRecords, clearSelectedRecords, deleteRecordTrigger);
+    const deleteSelectedRecords = useCallback(() => deleteRecords(selectedRecords, clearSelectedRecords, deleteRecordTrigger),
+        [clearSelectedRecords, deleteRecordTrigger, selectedRecords]);
 
     return (
         <div className={classes.recordsTable}>

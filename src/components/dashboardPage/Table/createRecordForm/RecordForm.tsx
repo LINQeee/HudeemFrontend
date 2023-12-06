@@ -1,6 +1,6 @@
 import classes from "./RecordForm.module.scss";
 import FormInput from "../../../UI/formInput/FormInput.tsx";
-import {FC, useState} from "react";
+import {FC, memo, useCallback, useState} from "react";
 import SectionHeader from "../../../UI/sectionHeader/SectionHeader.tsx";
 import ActionButton from "../../../UI/actionButton/ActionButton.tsx";
 import {useForm} from "../../../../hooks/UseForm.ts";
@@ -17,41 +17,41 @@ interface RecordFormProps {
     buttonLabel: string;
 }
 
-const RecordForm: FC<RecordFormProps> = ({
-                                             id,
-                                             initWeight = "",
-                                             initDate = "",
-                                             onSubmitForm,
-                                             formLabel,
-                                             buttonLabel
-                                         }) => {
+const RecordForm: FC<RecordFormProps> = memo(({
+                                                  id,
+                                                  initWeight = "",
+                                                  initDate = "",
+                                                  onSubmitForm,
+                                                  formLabel,
+                                                  buttonLabel
+                                              }) => {
 
 
     const [weight, setWeight] = useState<string>(initWeight);
     const [date, setDate] = useState<string>(initDate);
 
-    const submitEvent = () => onSubmitForm(parseFloat(weight), date, id);
+    const submitEvent = useCallback(() => onSubmitForm(parseFloat(weight), date, id), [onSubmitForm, weight, date, id]);
 
     const [errors, removeError, submit] = useForm(submitEvent);
 
-    const submitForm = () => submit([
+    const submitForm = useCallback(() => submit([
         {value: weight, type: InputType.NUMBER},
         {value: date, type: InputType.DATE}
-    ]);
+    ]), [submit, weight, date]);
 
     return (
         <form className={classes.createRecordForm} onClick={e => e.stopPropagation()}>
             <SectionHeader content={formLabel}/>
             <FormInput type={InputType.NUMBER} label={"Вес"} value={weight} setValue={setWeight}
                        error={errors.find(err => err.inputType === InputType.NUMBER)}
-                        removeError={removeError}/>
+                       removeError={removeError}/>
 
             <FormInput type={InputType.DATE} label={"Дата"} value={date} setValue={setDate}
                        error={errors.find(err => err.inputType === InputType.DATE)}
-                        removeError={removeError}/>
+                       removeError={removeError}/>
             <ActionButton label={buttonLabel} iconClasses={""} styleType={StyleType.PRIMARY} onClick={submitForm}/>
         </form>
     );
-};
+});
 
 export default RecordForm;

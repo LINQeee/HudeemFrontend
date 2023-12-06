@@ -1,6 +1,6 @@
 import classes from "./ProgressStatsBox.module.scss";
 import ProgressStat from "./progressStat/ProgressStat.tsx";
-import {FC} from "react";
+import {FC, memo} from "react";
 import {IUser} from "../../../models/IUser.ts";
 import {formatNumeralFullDate} from "../../../services/DateService.ts";
 
@@ -8,7 +8,7 @@ interface ProgressStatsBoxProps {
     user: IUser;
 }
 
-const ProgressStatsBox: FC<ProgressStatsBoxProps> = ({user}) => {
+const ProgressStatsBox: FC<ProgressStatsBoxProps> = memo(({user}) => {
     return (
         <div className={classes.progressStatsBox}>
             <ProgressStat value={user.perDay} percent={-11} label={"В среднем в день"}/>
@@ -18,6 +18,6 @@ const ProgressStatsBox: FC<ProgressStatsBoxProps> = ({user}) => {
             <ProgressStat value={formatNumeralFullDate(user.plannedDate)} label={"Дата достижения цели"}/>
         </div>
     );
-};
+});
 
 export default ProgressStatsBox;

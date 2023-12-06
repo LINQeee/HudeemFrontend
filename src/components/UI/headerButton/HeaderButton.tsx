@@ -1,16 +1,16 @@
 import classes from "./HeaderButton.module.scss";
-import {FC} from "react";
+import {FC, memo} from "react";
 
 interface HeaderButtonProps {
     iconClasses: string;
 }
 
-const HeaderButton: FC<HeaderButtonProps> = ({iconClasses}) => {
+const HeaderButton: FC<HeaderButtonProps> = memo(({iconClasses}) => {
     return (
         <button className={classes.headerButton}>
             <i className={iconClasses}></i>
         </button>
     );
-};
+});
 
 export default HeaderButton;

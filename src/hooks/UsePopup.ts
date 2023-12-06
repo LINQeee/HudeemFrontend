@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 
 interface IUsePopup {
     popupVisible: boolean;
@@ -16,10 +16,10 @@ export const usePopup = (): IUsePopup => {
         return () => document.removeEventListener("click", () => setPopupVisible(false))
     }, []);
 
-    const openPopup = () => {
+    const openPopup = useCallback(() => {
         if (popupVisible) return;
         setTimeout(() => setPopupVisible(true), 1);
-    }
+    }, [popupVisible]);
 
     const closePopup = () => setPopupVisible(false);
 

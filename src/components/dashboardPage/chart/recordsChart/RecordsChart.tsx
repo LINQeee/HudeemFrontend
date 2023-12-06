@@ -8,7 +8,7 @@ import {
     YAxis
 } from "recharts";
 import {IRecord} from "../../../../models/IRecord.ts";
-import {FC} from "react";
+import {FC, memo, useMemo} from "react";
 import classes from "./RecordsChart.module.scss";
 import {IUser} from "../../../../models/IUser.ts";
 import {formatISODate} from "../../../../services/DateService.ts";
@@ -21,14 +21,14 @@ interface RecordsChartProps {
     user: IUser;
 }
 
-const RecordsChart: FC<RecordsChartProps> = ({records, user}) => {
+const RecordsChart: FC<RecordsChartProps> = memo(({records, user}) => {
 
     records = [{date: user.startDate, currentWeight: user.initialWeight, userId: user.id, id: -1}, ...records];
 
-    const data: IRecordChartData[] = records.map(record => ({
+    const data: IRecordChartData[] = useMemo(() => records.map(record => ({
         date: record.date,
         value: record.currentWeight,
-    }));
+    })), [records]);
 
     const xAxisInterval = useScreenResponsive(data.length, 250);
 
@@ -69,6 +69,6 @@ const RecordsChart: FC<RecordsChartProps> = ({records, user}) => {
             </LineChart>
         </ResponsiveContainer>
     );
-};
+});
 
 export default RecordsChart;

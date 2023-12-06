@@ -1,11 +1,18 @@
 import "./App.scss";
-import {RouterProvider} from 'react-router-dom';
-import {browserRouter} from "./router/BrowserRouter.ts";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {lazy} from "react";
+import BaseLayout from "./components/baseLayout/BaseLayout.tsx";
+const Dashboard = lazy(() => import("./components/dashboardPage/dashboard/Dashboard.tsx"));
 
 function App() {
 
     return (
-        <RouterProvider router={browserRouter}/>
+        <BrowserRouter>
+            <BaseLayout/>
+            <Routes>
+                <Route path={"dashboard"} element={<Dashboard/>} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 

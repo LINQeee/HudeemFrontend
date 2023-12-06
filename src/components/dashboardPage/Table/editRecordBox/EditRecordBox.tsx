@@ -1,13 +1,13 @@
 import classes from "./EditRecordBox.module.scss";
 import AsideButton from "../../../UI/asideButton/AsideButton.tsx";
-import {FC} from "react";
+import {FC, memo} from "react";
 
 interface EditRecordPopupProps {
     onEditClick: () => void;
     onDeleteClick: () => void;
 }
 
-const EditRecordBox: FC<EditRecordPopupProps> = ({onEditClick, onDeleteClick}) => {
+const EditRecordBox: FC<EditRecordPopupProps> = memo(({onEditClick, onDeleteClick}) => {
 
     return (
         <div className={classes.editRecordPopup} onClick={e => e.stopPropagation()}>
@@ -15,6 +15,6 @@ const EditRecordBox: FC<EditRecordPopupProps> = ({onEditClick, onDeleteClick}) =
             <AsideButton content={"Удалить"} iconClasses={"fa-regular fa-trash-can"} onClick={onDeleteClick}/>
         </div>
     );
-};
+});
 
 export default EditRecordBox;

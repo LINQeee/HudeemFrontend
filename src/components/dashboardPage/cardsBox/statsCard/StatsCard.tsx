@@ -1,5 +1,5 @@
 import classes from "./StatsCard.module.scss";
-import {FC} from "react";
+import {FC, memo} from "react";
 import {IconColor} from "../../../../utils/enums/IconColorEnum.ts";
 
 interface StatsCardProps {
@@ -9,7 +9,7 @@ interface StatsCardProps {
     color: IconColor;
 }
 
-const StatsCard: FC<StatsCardProps> = ({ label, value, iconClasses, color}) => {
+const StatsCard: FC<StatsCardProps> = memo(({ label, value, iconClasses, color}) => {
 
     const iconBoxClassName = [
         classes.iconBox,
@@ -26,6 +26,6 @@ const StatsCard: FC<StatsCardProps> = ({ label, value, iconClasses, color}) => {
             <h4>{value}</h4>
         </div>
     );
-};
+});
 
 export default StatsCard;

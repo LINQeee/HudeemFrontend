@@ -1,5 +1,5 @@
 import classes from "./AsideButton.module.scss";
-import {FC} from "react";
+import {FC, memo} from "react";
 
 interface AsideButtonProps {
     content: string;
@@ -8,7 +8,7 @@ interface AsideButtonProps {
     onClick: () => void;
 }
 
-const AsideButton: FC<AsideButtonProps> = ({content, iconClasses, active, onClick }) => {
+const AsideButton: FC<AsideButtonProps> = memo(({content, iconClasses, active, onClick }) => {
 
     const className = [classes.asideButton, active ? classes.active : undefined].join(" ");
 
@@ -18,6 +18,6 @@ const AsideButton: FC<AsideButtonProps> = ({content, iconClasses, active, onClic
             <span>{content}</span>
         </button>
     );
-};
+});
 
 export default AsideButton;

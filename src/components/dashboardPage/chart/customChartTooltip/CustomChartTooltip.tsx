@@ -1,5 +1,5 @@
 import classes from "./CustomChartTooltip.module.scss";
-import {FC} from "react";
+import {FC, memo} from "react";
 import {formatFullISODate} from "../../../../services/DateService.ts";
 
 interface CustomChartTooltipProps {
@@ -8,7 +8,7 @@ interface CustomChartTooltipProps {
     label?: string;
 }
 
-const CustomChartTooltip: FC<CustomChartTooltipProps> = ({active, payload, label}) => {
+const CustomChartTooltip: FC<CustomChartTooltipProps> = memo(({active, payload, label}) => {
 
     if (!active || !label || !payload) return null;
 
@@ -18,6 +18,6 @@ const CustomChartTooltip: FC<CustomChartTooltipProps> = ({active, payload, label
             <span>{`Вес - ${payload[0].value}кг`}</span>
         </div>
     );
-};
+});
 
 export default CustomChartTooltip;

@@ -1,5 +1,5 @@
 import classes from "./FormInput.module.scss";
-import React, {Dispatch, FC, SetStateAction} from "react";
+import React, {Dispatch, FC, memo, SetStateAction} from "react";
 import {InputType} from "../../../utils/enums/InputTypeEnum.ts";
 import {IInputError} from "../../../utils/types/InputErrorType.ts";
 
@@ -12,7 +12,7 @@ interface TextInputProps {
     removeError: (error: IInputError) => void;
 }
 
-const FormInput: FC<TextInputProps> = ({type, label, value, setValue, error, removeError}) => {
+const FormInput: FC<TextInputProps> = memo(({type, label, value, setValue, error, removeError}) => {
 
     const inputClassName = [classes.textInput, error ? classes.error : undefined].join(" ");
 
@@ -36,10 +36,10 @@ const FormInput: FC<TextInputProps> = ({type, label, value, setValue, error, rem
                 onChange={changeHandler}
                 onClick={dateClickHandler}
             />
-            { type === InputType.DATE && <i className="fa-regular fa-calendar-days"></i>}
+            {type === InputType.DATE && <i className="fa-regular fa-calendar-days"></i>}
             <span>{error?.errorMessage}</span>
         </div>
     );
-};
+});
 
 export default FormInput;

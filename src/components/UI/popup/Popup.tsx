@@ -1,4 +1,4 @@
-import {FC, ReactNode} from "react";
+import {FC, memo, ReactNode} from "react";
 import {CSSTransition} from "react-transition-group";
 import "./Transitions.scss";
 
@@ -7,7 +7,7 @@ interface PopupProps {
     popupVisible: boolean;
 }
 
-const Popup: FC<PopupProps> = ({children, popupVisible}) => {
+const Popup: FC<PopupProps> = memo(({children, popupVisible}) => {
 
     return (
         <CSSTransition
@@ -19,6 +19,6 @@ const Popup: FC<PopupProps> = ({children, popupVisible}) => {
             {children}
         </CSSTransition>
     );
-};
+});
 
 export default Popup;

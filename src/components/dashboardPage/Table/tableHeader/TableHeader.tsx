@@ -1,6 +1,6 @@
 import classes from "./TableHeader.module.scss";
 import DeleteRecordsButton from "../deleteRecordsButton/DeleteRecordsButton.tsx";
-import {FC} from "react";
+import {FC, memo} from "react";
 import Popup from "../../../UI/popup/Popup.tsx";
 
 interface TableHeaderProps {
@@ -8,7 +8,7 @@ interface TableHeaderProps {
     onDeleteButtonClick: () => void;
 }
 
-const TableHeader: FC<TableHeaderProps> = ({enableDeleteButton, onDeleteButtonClick}) => {
+const TableHeader: FC<TableHeaderProps> = memo(({enableDeleteButton, onDeleteButtonClick}) => {
     return (
         <div className={classes.tableHeader}>
             <Popup popupVisible={enableDeleteButton}><DeleteRecordsButton onClick={onDeleteButtonClick}/></Popup>
@@ -16,6 +16,6 @@ const TableHeader: FC<TableHeaderProps> = ({enableDeleteButton, onDeleteButtonCl
             <span>Вес</span>
         </div>
     );
-};
+});
 
 export default TableHeader;

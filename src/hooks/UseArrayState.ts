@@ -15,7 +15,7 @@ export const useArrayState = <T>(initialValue: T[]): UseArrayState<T> => {
     const addValues = (values: T[]) => setArray([...array, ...values]);
     const removeValue = (value: T) => setArray(array.filter(v => v !== value));
 
-    const clear = () => setArray([]);
+    const clear = () => () => setArray([]);
 
     return [array, addValue, removeValue, addValues, clear];
 }

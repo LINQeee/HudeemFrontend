@@ -1,5 +1,5 @@
 import classes from "./ActionButton.module.scss";
-import React, {FC} from "react";
+import React, {FC, memo} from "react";
 import {StyleType} from "../../../utils/enums/StyleTypeEnum.ts";
 
 interface SubmitButtonProps {
@@ -9,7 +9,7 @@ interface SubmitButtonProps {
     onClick: () => void;
 }
 
-const ActionButton: FC<SubmitButtonProps> = ({label, iconClasses, styleType, onClick}) => {
+const ActionButton: FC<SubmitButtonProps> = memo(({label, iconClasses, styleType, onClick}) => {
 
     const className = [
         classes.actionButton,
@@ -28,6 +28,6 @@ const ActionButton: FC<SubmitButtonProps> = ({label, iconClasses, styleType, onC
             <span>{label}</span>
         </button>
     );
-};
+});
 
 export default ActionButton;

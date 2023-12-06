@@ -2,14 +2,14 @@ import classes from "./EditRecordButton.module.scss";
 import {usePopup} from "../../../../hooks/UsePopup.ts";
 import EditRecordBox from "../editRecordBox/EditRecordBox.tsx";
 import Popup from "../../../UI/popup/Popup.tsx";
-import {FC} from "react";
+import {FC, memo} from "react";
 
 interface EditButtonProps {
     openRecordPopup: () => void;
     deleteRecord: () => void;
 }
 
-const EditRecordButton: FC<EditButtonProps> = ({openRecordPopup, deleteRecord}) => {
+const EditRecordButton: FC<EditButtonProps> = memo(({openRecordPopup, deleteRecord}) => {
 
     const {popupVisible, openPopup, closePopup} = usePopup();
 
@@ -26,6 +26,6 @@ const EditRecordButton: FC<EditButtonProps> = ({openRecordPopup, deleteRecord}) 
             </Popup>
         </div>
     );
-};
+});
 
 export default EditRecordButton;
