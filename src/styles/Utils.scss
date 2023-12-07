@@ -42,3 +42,7 @@
   padding: 0 30px 30px 30px;
   border-radius: 8px;
 }
+
+@mixin page-content-padding {
+  padding: 55px + 40px 40px 40px 182px + 40px;
+}

@@ -14,7 +14,7 @@ import {useArrayState} from "../../../../hooks/UseArrayState.ts";
 
 const RecordsTable = () => {
 
-    const {recordDTOList, userDTO} = useFetchUserQuery(1).data!;
+    const {recordDTOList, userDTO} = useFetchUserQuery(2).data!;
     const {popupVisible, openPopup, closePopup} = usePopup();
     const [editingRecord, setEditingRecord] = useState<IRecord>();
     const [editRecordTrigger] = useEditRecordMutation();
@@ -41,8 +41,8 @@ const RecordsTable = () => {
         <div className={classes.recordsTable}>
             <TableHeader enableDeleteButton={selectedRecords.length > 0} onDeleteButtonClick={deleteSelectedRecords}/>
             <ul>
-                {
-                    recordDTOList.slice(0).reverse().map(
+                {recordDTOList.length >= 0 ? <h1 className={classes.emptyPlaceholder}>Здесь пока что пусто</h1>
+                    : recordDTOList.slice(0).reverse().map(
                         record => <TableRow
                             record={record}
                             key={record.id}

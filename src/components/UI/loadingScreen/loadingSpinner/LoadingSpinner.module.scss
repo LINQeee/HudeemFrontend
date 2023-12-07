@@ -1,0 +1,150 @@
+@import "../../../../styles/ThemeVariables";
+@import "../../../../styles/Utils";
+
+.loadingSpinner {
+
+  width: 70px;
+  height: 70px;
+  z-index: 99;
+  @include flex-column;
+  @include align-center-justify-start;
+  gap: 15px;
+}
+
+.calories {
+  transform-origin: top center;
+  font-size: calc(100% + 60px);
+  animation: 2s ease-in-out beat infinite;
+  transition: all 0.1s;
+}
+
+.calories:before {
+  transition: all 0.5s;
+  animation: 2s ease-in-out beat infinite;
+}
+
+.loadingCircles {
+  width: calc(100% + 20px);
+  display: flex;
+  @include align-start-justify-between;
+
+  i {
+    transform-origin: top center;
+    color: transparent;
+    font-size: calc(100% - 10px);
+    transition: all 0.15s;
+  }
+
+  i:nth-child(1) {
+    animation: 4.5s ease-in-out firstCircleShow infinite;
+  }
+
+  i:nth-child(2) {
+    animation: 4.5s ease-in-out secondCircleShow infinite;
+  }
+
+  i:nth-child(3) {
+    animation: 4.5s ease-in-out thirdCircleShow infinite;
+  }
+
+  i:nth-child(4) {
+    animation: 4.5s ease-in-out fourthCircleShow infinite;
+  }
+}
+
+@keyframes firstCircleShow {
+  0% {
+    color: $green;
+    transform: scale(0);
+  }
+  22% {
+    color: $highlight-green;
+    transform: scale(1);
+  }
+  88% {
+    color: $highlight-green;
+    transform: scale(1);
+  }
+  100% {
+    color: $green;
+    transform: scale(0);
+  }
+}
+
+@keyframes secondCircleShow {
+  0% {
+    transform: scale(0);
+  }
+  22% {
+    color: $green;
+    transform: scale(0);
+  }
+  44% {
+    color: $highlight-green;
+    transform: scale(1);
+  }
+  88% {
+    color: $highlight-green;
+    transform: scale(1);
+  }
+  100% {
+    color: $green;
+    transform: scale(0);
+  }
+}
+
+@keyframes thirdCircleShow {
+  0% {
+    transform: scale(0);
+  }
+  44% {
+    color: $green;
+    transform: scale(0);
+  }
+  66% {
+    color: $highlight-green;
+    transform: scale(1);
+  }
+  88% {
+    color: $highlight-green;
+    transform: scale(1);
+  }
+  100% {
+    color: $green;
+    transform: scale(0);
+  }
+}
+
+@keyframes fourthCircleShow {
+  0% {
+    color: $green;
+    transform: scale(0);
+  }
+  66% {
+    color: $green;
+    transform: scale(0);
+  }
+  88% {
+    color: $highlight-green;
+    transform: scale(1);
+  }
+  100% {
+    color: $green;
+    transform: scale(0);
+  }
+}
+
+@keyframes beat {
+  0% {
+    transform: scale(1) translateY(0);
+    color: $green;
+  }
+  50% {
+    transform: scale(1.2) translateY(-15px);
+    color: $highlight-green;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    color: $green;
+  }
+}

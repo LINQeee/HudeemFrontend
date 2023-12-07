@@ -6,7 +6,7 @@ import RecordsChart from "../chart/recordsChart/RecordsChart.tsx";
 
 const ProgressMetricsSection = () => {
 
-    const { data } = useFetchUserQuery(1);
+    const { data } = useFetchUserQuery(2);
 
     if (data === undefined) return null;
 

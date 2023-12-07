@@ -16,7 +16,7 @@ const TableSection = () => {
 
     const {popupVisible, openPopup, closePopup} = usePopup();
     const [createRecordTrigger] = useCreateRecordMutation();
-    const {data} = useFetchUserQuery(1);
+    const {data} = useFetchUserQuery(2);
 
     if (data === undefined) return null;
 

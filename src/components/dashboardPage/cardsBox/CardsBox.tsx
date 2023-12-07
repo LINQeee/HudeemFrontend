@@ -6,7 +6,7 @@ import {IconColor} from "../../../utils/enums/IconColorEnum.ts";
 
 const CardsBox = () => {
 
-    const {data} = useFetchUserQuery(1);
+    const {data} = useFetchUserQuery(2);
 
     if (data === undefined) return null;
 

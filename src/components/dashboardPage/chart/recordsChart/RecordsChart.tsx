@@ -1,12 +1,4 @@
-import {
-    CartesianGrid,
-    Line,
-    LineChart,
-    ResponsiveContainer,
-    Tooltip,
-    XAxis,
-    YAxis
-} from "recharts";
+import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import {IRecord} from "../../../../models/IRecord.ts";
 import {FC, memo, useMemo} from "react";
 import classes from "./RecordsChart.module.scss";
