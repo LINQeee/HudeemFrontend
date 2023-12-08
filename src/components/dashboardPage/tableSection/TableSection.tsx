@@ -6,24 +6,25 @@ import Popup from "../../UI/popup/Popup.tsx";
 import {usePopup} from "../../../hooks/UsePopup.ts";
 import RecordForm from "../Table/createRecordForm/RecordForm.tsx";
 import {useCreateRecordMutation} from "../../../api/recordApi.ts";
-import {useFetchUserQuery} from "../../../api/userApi.ts";
 import {StyleType} from "../../../utils/enums/StyleTypeEnum.ts";
 import {IInputError} from "../../../utils/types/InputErrorType.ts";
 import {createRecord} from "../../../services/RecordApiService.ts";
 import {IRecord} from "../../../models/IRecord.ts";
+import {IUser} from "../../../models/IUser.ts";
+import {FC, memo} from "react";
 
-const TableSection = () => {
+interface TableSectionProps {
+    user: IUser;
+    recordList: IRecord[];
+}
+
+const TableSection: FC<TableSectionProps> = memo(({user, recordList}) => {
 
     const {popupVisible, openPopup, closePopup} = usePopup();
     const [createRecordTrigger] = useCreateRecordMutation();
-    const {data} = useFetchUserQuery(2);
-
-    if (data === undefined) return null;
-
-
 
     const submitCreateRecordForm = (weight: number, date: string): Promise<IInputError> => {
-        const newRecord:Omit<IRecord, "id"> = {date: date, currentWeight: weight, userId: data.userDTO.id};
+        const newRecord: Omit<IRecord, "id"> = {date: date, currentWeight: weight, userId: user.id};
         return createRecord(newRecord, closePopup, createRecordTrigger);
     }
 
@@ -37,7 +38,7 @@ const TableSection = () => {
                 <ActionButton label={"Добавить"} iconClasses={"fa-regular fa-plus"} styleType={StyleType.PRIMARY}
                               onClick={openPopup}/>
             </div>
-            <RecordsTable/>
+            <RecordsTable recordList={recordList} userId={user.id}/>
             <Popup popupVisible={popupVisible}>
                 <RecordForm
                     onSubmitForm={submitCreateRecordForm}
@@ -48,6 +49,6 @@ const TableSection = () => {
             </Popup>
         </div>
     );
-};
+});
 
 export default TableSection;

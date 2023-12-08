@@ -18,11 +18,6 @@
   transition: all 0.1s;
 }
 
-.calories:before {
-  transition: all 0.5s;
-  animation: 2s ease-in-out beat infinite;
-}
-
 .loadingCircles {
   width: calc(100% + 20px);
   display: flex;

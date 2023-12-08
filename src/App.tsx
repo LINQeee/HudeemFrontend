@@ -1,20 +1,24 @@
 import "./App.scss";
 import {HashRouter, Route, Routes} from "react-router-dom";
-import {lazy} from "react";
-import BaseLayout from "./components/baseLayout/BaseLayout.tsx";
+import {lazy, Suspense} from "react";
+import {CurrentUserIdContext} from "./context/CurrentUserIdContext.ts";
 import LoadingScreen from "./components/UI/loadingScreen/screen/LoadingScreen.tsx";
 
 const Dashboard = lazy(() => import("./components/dashboardPage/dashboard/Dashboard.tsx"));
+const BaseLayout = lazy(() => import("./components/baseLayout/BaseLayout.tsx"));
 
 function App() {
 
+    const currentId = 1;
+
     return (
         <HashRouter>
-            <BaseLayout/>
+            <CurrentUserIdContext.Provider value={currentId}>
+                <Suspense fallback={<LoadingScreen/>}><BaseLayout/></Suspense>
             <Routes>
-                <Route path={"dashboard"} element={<Dashboard/>} />
-                <Route path={"loading"} element={<LoadingScreen/>}/>
+                <Route path={"dashboard"} element={<Suspense fallback={<LoadingScreen/>}><Dashboard/></Suspense>} />
             </Routes>
+            </CurrentUserIdContext.Provider>
         </HashRouter>
     )
 }

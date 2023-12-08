@@ -1,16 +1,15 @@
 import classes from "./CardsBox.module.scss";
 import StatsCard from "./statsCard/StatsCard.tsx";
-import {useFetchUserQuery} from "../../../api/userApi.ts";
 import {formatNumeralFullDate} from "../../../services/DateService.ts";
 import {IconColor} from "../../../utils/enums/IconColorEnum.ts";
+import {IUser} from "../../../models/IUser.ts";
+import {FC, memo} from "react";
 
-const CardsBox = () => {
+interface CardsBoxProps {
+    user: IUser;
+}
 
-    const {data} = useFetchUserQuery(2);
-
-    if (data === undefined) return null;
-
-    const {userDTO: user} = data;
+const CardsBox: FC<CardsBoxProps> = memo(({user}) => {
 
     return (
         <div className={classes.cardsBox}>
@@ -40,6 +39,6 @@ const CardsBox = () => {
             />
         </div>
     );
-};
+});
 
 export default CardsBox;

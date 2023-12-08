@@ -1,22 +1,25 @@
 import classes from "./ProgressMetricsSection.module.scss";
 import SectionHeader from "../../UI/sectionHeader/SectionHeader.tsx";
 import ProgressStatsBox from "../progressStatsBox/ProgressStatsBox.tsx";
-import {useFetchUserQuery} from "../../../api/userApi.ts";
 import RecordsChart from "../chart/recordsChart/RecordsChart.tsx";
+import {IUser} from "../../../models/IUser.ts";
+import {IRecord} from "../../../models/IRecord.ts";
+import {FC, memo} from "react";
 
-const ProgressMetricsSection = () => {
+interface ProgressMetricsSectionProps {
+    user: IUser;
+    recordList: IRecord[];
+}
 
-    const { data } = useFetchUserQuery(2);
-
-    if (data === undefined) return null;
+const ProgressMetricsSection: FC<ProgressMetricsSectionProps> = memo(({user, recordList}) => {
 
     return (
         <section className={classes.progressMetricsBox}>
             <SectionHeader content={"Статистика прогресса"}/>
-            <ProgressStatsBox user={data.userDTO}/>
-            <RecordsChart records={data.recordDTOList} user={data.userDTO}/>
+            <ProgressStatsBox user={user}/>
+            <RecordsChart records={recordList} user={user}/>
         </section>
     );
-};
+});
 
 export default ProgressMetricsSection;
