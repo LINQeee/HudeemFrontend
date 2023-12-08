@@ -9,6 +9,13 @@
   border: 1px solid $secondary-text;
   transition: all 0.25s ease;
 
+  > label {
+    position: absolute;
+    opacity: 0;
+    user-select: none;
+    pointer-events: none;
+  }
+
   &:has(input:checked) {
     border-color: $text;
   }

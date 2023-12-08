@@ -21,7 +21,7 @@ const ProgressStat: FC<ProgressStatProps> = memo(({value, percent, label}) => {
                     <span>{calculatePercent}{percent && <i className="fa-light fa-arrow-up-right"></i>}</span>
                 }
             </div>
-            <h6>{label}</h6>
+            <span>{label}</span>
         </div>
     );
 });

@@ -14,7 +14,8 @@ const Checkbox: FC<CheckboxProps> = memo(({value, onChange}) => {
 
     return (
         <div className={classes.checkbox}>
-            <input type={"checkbox"} checked={value} onChange={changeHandler}/>
+            <label htmlFor={new Date().toISOString()}>select checkbox</label>
+            <input id={new Date().toISOString()} type={"checkbox"} checked={value} onChange={changeHandler}/>
             <i className="fa-regular fa-check"></i>
         </div>
     );

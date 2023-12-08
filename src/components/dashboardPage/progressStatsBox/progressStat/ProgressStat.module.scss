@@ -6,7 +6,7 @@
   @include flex-column;
   @include align-start-justify-between;
 
-  > h6 {
+  > span {
     color: $text;
     font-size: 14px;
     font-weight: 500;
