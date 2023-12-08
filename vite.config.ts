@@ -12,9 +12,6 @@ export default defineConfig({
             targets: [{
                 src: "githubConfigs/CNAME",
                 dest: "."
-            }, {
-                src: "githubConfigs/.htaccess",
-                dest: "."
             }]
         })
     ],
