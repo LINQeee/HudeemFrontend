@@ -1,0 +1,11 @@
+# Enable mod_headers for Apache
+<IfModule mod_headers.c>
+  # Cache policy for files based on file size
+  <FilesMatch "\.(js|css|png|jpg|jpeg|gif|ico|woff|woff2|ttf|otf|svg|pdf)$">
+    SetEnvIf Content-Length "^[0-9]{1,1000}$" SMALL_FILE
+    Header set Cache-Control "public, max-age=3600" env=SMALL_FILE
+
+    SetEnvIf Content-Length "^[0-9]{1001,}$" LARGE_FILE
+    Header set Cache-Control "public, max-age=604800" env=LARGE_FILE
+  </FilesMatch>
+</IfModule>
