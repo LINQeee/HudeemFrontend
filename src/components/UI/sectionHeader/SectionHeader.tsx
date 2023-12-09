@@ -1,4 +1,4 @@
-import classes from "./SectionHeader.module.scss";
+import classes from "./SectionHeader.module.sass";
 import {FC, memo} from "react";
 
 interface SectionHeaderProps {

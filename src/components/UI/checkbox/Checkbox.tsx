@@ -1,4 +1,4 @@
-import classes from "./Checkbox.module.scss";
+import classes from "./Checkbox.module.sass";
 import React, {FC, memo} from "react";
 
 interface CheckboxProps {

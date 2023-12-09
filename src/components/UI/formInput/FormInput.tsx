@@ -1,4 +1,4 @@
-import classes from "./FormInput.module.scss";
+import classes from "./FormInput.module.sass";
 import React, {Dispatch, FC, memo, SetStateAction} from "react";
 import {InputType} from "../../../utils/enums/InputTypeEnum.ts";
 import {IInputError} from "../../../utils/types/InputErrorType.ts";

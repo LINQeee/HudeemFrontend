@@ -1,7 +1,7 @@
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 import {useAppSelector} from "../../../hooks/Redux.ts";
 import Notification from "../notification/Notification.tsx";
-import classes from "./NotificationBox.module.scss";
+import classes from "./NotificationBox.module.sass";
 
 const NotificationBox = () => {
 

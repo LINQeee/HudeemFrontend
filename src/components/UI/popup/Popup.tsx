@@ -1,6 +1,6 @@
 import {FC, memo, ReactNode} from "react";
 import {CSSTransition} from "react-transition-group";
-import "./Transitions.scss";
+import "./Transitions.sass";
 
 interface PopupProps {
     children: ReactNode;

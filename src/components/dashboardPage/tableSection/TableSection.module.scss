@@ -1,5 +1,5 @@
-@import "../../../styles/ThemeVariables.scss";
-@import "../../../styles/Utils.scss";
+@import "../../../styles/ThemeVariables";
+@import "../../../styles/Utils";
 
 .tableSection {
   width: 25%;
@@ -13,7 +13,6 @@
 }
 
 .actionBox {
-  display: flex;
   @include align-start-justify-between;
   width: 100%;
   gap: 30px;

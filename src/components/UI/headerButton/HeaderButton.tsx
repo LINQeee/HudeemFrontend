@@ -1,4 +1,4 @@
-import classes from "./HeaderButton.module.scss";
+import classes from "./HeaderButton.module.sass";
 import {FC, memo} from "react";
 
 interface HeaderButtonProps {

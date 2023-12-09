@@ -1,4 +1,4 @@
-import classes from "./AsideButton.module.scss";
+import classes from "./AsideButton.module.sass";
 import {FC, memo} from "react";
 
 interface AsideButtonProps {

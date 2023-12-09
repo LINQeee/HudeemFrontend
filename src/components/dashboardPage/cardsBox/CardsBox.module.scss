@@ -2,7 +2,6 @@
 @import "../../../styles/Utils";
 
 .cardsBox {
-  display: flex;
   @include align-center-justify-start;
   gap: 40px;
   flex-wrap: wrap;

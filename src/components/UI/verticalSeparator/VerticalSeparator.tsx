@@ -1,4 +1,4 @@
-import classes from "./VerticalSeparator.module.scss";
+import classes from "./VerticalSeparator.module.sass";
 
 const VerticalSeparator = () => {
     return <div className={classes.separator}></div>;

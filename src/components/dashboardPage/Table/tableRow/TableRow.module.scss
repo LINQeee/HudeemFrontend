@@ -1,8 +1,7 @@
-@import "../../../../styles/ThemeVariables.scss";
-@import "../../../../styles/Utils.scss";
+@import "../../../../styles/ThemeVariables";
+@import "../../../../styles/Utils";
 
 .tableRow {
-  display: flex;
   @include align-center-justify-start;
   height: 43px;
   width: 100%;

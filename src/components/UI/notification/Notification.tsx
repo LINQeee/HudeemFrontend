@@ -1,8 +1,8 @@
-import classes from "./Notification.module.scss";
+import classes from "./Notification.module.sass";
 import {NotificationType} from "../../../utils/enums/NotificationTypeEnum.ts";
 import {FC, memo, useEffect} from "react";
 import {notificationSlice} from "../../../store/reducers/NotificationSlice.ts";
-import "../notificationBox/NotificationTransitions.scss";
+import "../notificationBox/NotificationTransitions.sass";
 import {useAppDispatch} from "../../../hooks/Redux.ts";
 import {INotification} from "../../../models/INotification.ts";
 

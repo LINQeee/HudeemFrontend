@@ -1,4 +1,4 @@
-import classes from "./ActionButton.module.scss";
+import classes from "./ActionButton.module.sass";
 import React, {FC, memo} from "react";
 import {StyleType} from "../../../utils/enums/StyleTypeEnum.ts";
 

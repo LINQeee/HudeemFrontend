@@ -4,12 +4,12 @@
 .editRecordPopup {
   position: absolute;
   width: 150px;
-  background: red;
   z-index: 100;
   right: 0;
   @include panel-styles;
   @include flex-column;
   @include align-start-justify-between;
+  box-shadow: $panel-shadow-dark;
   padding: 5px;
   top: 100%;
 

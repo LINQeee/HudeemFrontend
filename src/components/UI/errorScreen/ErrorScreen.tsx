@@ -1,4 +1,4 @@
-import classes from "./ErrorScreen.module.scss";
+import classes from "./ErrorScreen.module.sass";
 import {FC} from "react";
 
 interface ErrorScreenProps {

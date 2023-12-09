@@ -1,0 +1,19 @@
+.notification-enter
+  opacity: 0
+  scale: 0.5
+  transform: translateY(calc(100% + -200px))
+
+.notification-enter-active
+  opacity: 1
+  transform: translateY(0)
+  scale: 1
+  transition: all .6s ease
+
+.notification-exit
+  opacity: 1
+  transform: translateY(0)
+
+.notification-exit-active
+  opacity: 0
+  transform: translateY(calc(100% + -200px))
+  transition: all .6s ease
