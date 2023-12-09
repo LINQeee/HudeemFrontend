@@ -1,4 +1,4 @@
-import classes from "./TableSection.module.scss";
+import classes from "./TableSection.module.sass";
 import SectionHeader from "../../UI/sectionHeader/SectionHeader.tsx";
 import ActionButton from "../../UI/actionButton/ActionButton.tsx";
 import RecordsTable from "../Table/RecordsTable/RecordsTable.tsx";

@@ -1,4 +1,4 @@
-import classes from "./CustomChartTooltip.module.scss";
+import classes from "./CustomChartTooltip.module.sass";
 import {FC, memo} from "react";
 import {formatFullISODate} from "../../../../services/DateService.ts";
 

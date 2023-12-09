@@ -1,7 +1,7 @@
 import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import {IRecord} from "../../../../models/IRecord.ts";
 import {FC, memo, useMemo} from "react";
-import classes from "./RecordsChart.module.scss";
+import classes from "./RecordsChart.module.sass";
 import {IUser} from "../../../../models/IUser.ts";
 import {formatISODate} from "../../../../services/DateService.ts";
 import CustomChartTooltip from "../customChartTooltip/CustomChartTooltip.tsx";

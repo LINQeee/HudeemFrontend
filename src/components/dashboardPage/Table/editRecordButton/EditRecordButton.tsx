@@ -1,4 +1,4 @@
-import classes from "./EditRecordButton.module.scss";
+import classes from "./EditRecordButton.module.sass";
 import {usePopup} from "../../../../hooks/UsePopup.ts";
 import EditRecordBox from "../editRecordBox/EditRecordBox.tsx";
 import Popup from "../../../UI/popup/Popup.tsx";

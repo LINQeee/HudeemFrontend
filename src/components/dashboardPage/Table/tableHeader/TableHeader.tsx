@@ -1,4 +1,4 @@
-import classes from "./TableHeader.module.scss";
+import classes from "./TableHeader.module.sass";
 import DeleteRecordsButton from "../deleteRecordsButton/DeleteRecordsButton.tsx";
 import {FC, memo} from "react";
 import Popup from "../../../UI/popup/Popup.tsx";

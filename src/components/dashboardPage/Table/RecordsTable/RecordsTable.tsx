@@ -1,4 +1,4 @@
-import classes from "./RecordsTable.module.scss";
+import classes from "./RecordsTable.module.sass";
 import TableHeader from "../tableHeader/TableHeader.tsx";
 import TableRow from "../tableRow/TableRow.tsx";
 import {usePopup} from "../../../../hooks/UsePopup.ts";

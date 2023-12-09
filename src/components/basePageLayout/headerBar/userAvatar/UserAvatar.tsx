@@ -1,4 +1,4 @@
-import classes from "./UserAvatar.module.scss";
+import classes from "./UserAvatar.module.sass";
 import avatar from "../../../../assets/avatar.jpg";
 import {useFetchCurrentUserQuery} from "../../../../hooks/UseFetchCurrentUserQuery.ts";
 

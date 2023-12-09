@@ -1,4 +1,4 @@
-import classes from "./AsideBar.module.scss";
+import classes from "./AsideBar.module.sass";
 import AsideButton from "../../UI/asideButton/AsideButton.tsx";
 import Logo from "../../UI/logo/Logo.tsx";
 

@@ -1,4 +1,4 @@
-import classes from "./TableRow.module.scss";
+import classes from "./TableRow.module.sass";
 import Checkbox from "../../../UI/checkbox/Checkbox.tsx";
 import EditRecordButton from "../editRecordButton/EditRecordButton.tsx";
 import {FC, memo} from "react";

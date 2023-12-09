@@ -1,4 +1,4 @@
-import classes from "./EditRecordBox.module.scss";
+import classes from "./EditRecordBox.module.sass";
 import AsideButton from "../../../UI/asideButton/AsideButton.tsx";
 import {FC, memo} from "react";
 

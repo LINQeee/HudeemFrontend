@@ -1,4 +1,4 @@
-import classes from "./CardsBox.module.scss";
+import classes from "./CardsBox.module.sass";
 import StatsCard from "./statsCard/StatsCard.tsx";
 import {formatNumeralFullDate} from "../../../services/DateService.ts";
 import {IconColor} from "../../../utils/enums/IconColorEnum.ts";

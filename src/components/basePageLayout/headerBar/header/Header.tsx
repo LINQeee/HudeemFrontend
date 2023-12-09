@@ -1,4 +1,4 @@
-import classes from "./Header.module.scss";
+import classes from "./Header.module.sass";
 import UserAvatar from "../userAvatar/UserAvatar.tsx";
 import VerticalSeparator from "../../../UI/verticalSeparator/VerticalSeparator.tsx";
 import HeaderButton from "../../../UI/headerButton/HeaderButton.tsx";

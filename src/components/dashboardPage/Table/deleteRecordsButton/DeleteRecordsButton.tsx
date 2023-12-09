@@ -1,4 +1,4 @@
-import classes from "./DeleteRecordsButton.module.scss";
+import classes from "./DeleteRecordsButton.module.sass";
 import {FC, memo} from "react";
 
 interface DeleteRecordsButtonProps {

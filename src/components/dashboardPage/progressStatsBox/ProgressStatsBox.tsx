@@ -1,4 +1,4 @@
-import classes from "./ProgressStatsBox.module.scss";
+import classes from "./ProgressStatsBox.module.sass";
 import ProgressStat from "./progressStat/ProgressStat.tsx";
 import {FC, memo} from "react";
 import {IUser} from "../../../models/IUser.ts";

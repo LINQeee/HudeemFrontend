@@ -1,4 +1,4 @@
-import classes from "./RecordForm.module.scss";
+import classes from "./RecordForm.module.sass";
 import FormInput from "../../../UI/formInput/FormInput.tsx";
 import {FC, memo, useCallback, useState} from "react";
 import SectionHeader from "../../../UI/sectionHeader/SectionHeader.tsx";

@@ -1,4 +1,4 @@
-import classes from "./ProgressStat.module.scss";
+import classes from "./ProgressStat.module.sass";
 import {FC, memo, useMemo} from "react";
 
 interface ProgressStatProps {

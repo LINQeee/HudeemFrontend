@@ -1,9 +1,0 @@
-@import "../../../styles/ThemeVariables";
-@import "../../../styles/Utils";
-
-.cardsBox {
-  @include align-center-justify-start;
-  gap: 40px;
-  flex-wrap: wrap;
-  width: 100%;
-}

@@ -1,4 +1,4 @@
-import classes from "./Dashboard.module.scss";
+import classes from "./Dashboard.module.sass";
 import CardsBox from "../cardsBox/CardsBox.tsx";
 import ProgressMetricsSection from "../progressMetricsSection/ProgressMetricsSection.tsx";
 import TableSection from "../tableSection/TableSection.tsx";

@@ -1,4 +1,4 @@
-import classes from "./LoadingScreen.module.scss";
+import classes from "./LoadingScreen.module.sass";
 import LoadingSpinner from "../loadingSpinner/LoadingSpinner.tsx";
 
 const LoadingScreen = () => {

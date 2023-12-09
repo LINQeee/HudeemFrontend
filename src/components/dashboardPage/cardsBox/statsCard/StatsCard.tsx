@@ -1,4 +1,4 @@
-import classes from "./StatsCard.module.scss";
+import classes from "./StatsCard.module.sass";
 import {FC, memo} from "react";
 import {IconColor} from "../../../../utils/enums/IconColorEnum.ts";
 
