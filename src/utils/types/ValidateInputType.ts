@@ -1,6 +1,6 @@
-import {InputType} from "../enums/InputTypeEnum.ts";
+import {FormInputEnum} from "../enums/FormInputEnum.ts";
 
 export interface IValidateField {
     value: string;
-    type: InputType;
+    type: FormInputEnum;
 }

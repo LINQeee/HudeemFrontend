@@ -7,9 +7,10 @@ interface SubmitButtonProps {
     iconClasses: string;
     styleType: StyleType;
     onClick: () => void;
+    height?: number;
 }
 
-const ActionButton: FC<SubmitButtonProps> = memo(({label, iconClasses, styleType, onClick}) => {
+const ActionButton: FC<SubmitButtonProps> = memo(({label, iconClasses, styleType, onClick, height}) => {
 
     const className = [
         classes.actionButton,
@@ -23,7 +24,7 @@ const ActionButton: FC<SubmitButtonProps> = memo(({label, iconClasses, styleType
     }
 
     return (
-        <button className={className} onClick={clickHandler}>
+        <button className={className} onClick={clickHandler} style={{height: height}}>
             <i className={iconClasses}></i>
             <span>{label}</span>
         </button>

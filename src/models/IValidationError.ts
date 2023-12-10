@@ -1,7 +1,7 @@
-import {ResponseInputTypeEnum} from "../utils/enums/ResponseInputTypeEnum.ts";
+import {FormInputEnum} from "../utils/enums/FormInputEnum.ts";
 
 export interface IValidationError {
-    inputFieldType: ResponseInputTypeEnum;
+    inputFieldType: FormInputEnum;
     msg: string;
     type: "VALIDATION";
 }

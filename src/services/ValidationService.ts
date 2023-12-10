@@ -1,20 +1,24 @@
 import {IValidateField} from "../utils/types/ValidateInputType.ts";
-import {InputType} from "../utils/enums/InputTypeEnum.ts";
 import {IInputError} from "../utils/types/InputErrorType.ts";
+import {FormInputEnum} from "../utils/enums/FormInputEnum.ts";
 
 export const validateField = ({value, type}: IValidateField): IInputError | undefined => {
     switch (type) {
-        case InputType.TEXT:
-            if (isEmptyOrSpaces(value)) return {inputType: type, errorMessage: "Введите значение!"};
-            break;
-        case InputType.DATE:
+        case FormInputEnum.EMAIL:
+            if (isEmptyOrSpaces(value)) return {inputType: type, errorMessage: "Введите почту!"};
+            if (!isEmailValid(value)) return {inputType: type, errorMessage: "Некорректная почта!"};
+                break;
+        case FormInputEnum.DATE:
             if (isEmptyOrSpaces(value)) return {inputType: type, errorMessage: "Введите дату!"};
             if (!Date.parse(value)) return {inputType: type, errorMessage: "Некорректная дата!"};
             if (new Date(value) > new Date()) return {inputType: type, errorMessage: "Дата из будущего!"};
             break;
-        case InputType.NUMBER:
-            if (isEmptyOrSpaces(value)) return {inputType: type, errorMessage: "Введите число!"};
-            if (parseFloat(value) < 0) return {inputType: type, errorMessage: "Число не может быть отрицательным!"};
+        case FormInputEnum.WEIGHT:
+            if (isEmptyOrSpaces(value)) return {inputType: type, errorMessage: "Введите вес!"};
+            if (parseFloat(value) < 0) return {inputType: type, errorMessage: "Вес не может быть отрицательным!"};
+            break;
+        case FormInputEnum.PASSWORD:
+            if (isEmptyOrSpaces(value)) return {inputType: type, errorMessage: "Введите пароль!"};
     }
 
     return undefined;
@@ -33,3 +37,8 @@ export const validateAllFields = (fieldArray: IValidateField[]): IInputError[] =
 const isEmptyOrSpaces = (str: string): boolean => {
     return str === null || str.match(/^ *$/) !== null;
 }
+
+const isEmailValid = (email: string): boolean =>
+    email.match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    ) !== null;

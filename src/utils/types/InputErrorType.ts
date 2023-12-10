@@ -1,6 +1,6 @@
-import {InputType} from "../enums/InputTypeEnum.ts";
+import {FormInputEnum} from "../enums/FormInputEnum.ts";
 
 export interface IInputError {
-    inputType: InputType;
+    inputType: FormInputEnum;
     errorMessage: string;
 }

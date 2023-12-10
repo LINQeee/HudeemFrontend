@@ -1,6 +1,5 @@
 import {IInputError} from "../utils/types/InputErrorType.ts";
 import {isValidationError, IValidationError} from "../models/IValidationError.ts";
-import {parseResponseInputToInput} from "../utils/EnumParser.ts";
 import {CreateRecordTrigger, DeleteRecordTrigger, EditRecordTrigger} from "../api/recordApi.ts";
 import {IRecord} from "../models/IRecord.ts";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
@@ -34,6 +33,6 @@ export const deleteRecords = async (records: IRecord[], callback: () => void, de
 const rejectValidationError = (error: FetchBaseQueryError, reject: (value: (IInputError | PromiseLike<IInputError>)) => void) => {
     if (typeof error.data === 'object' && isValidationError(error.data as IValidationError)) {
         const validationError = error.data as IValidationError;
-        reject({inputType: parseResponseInputToInput(validationError.inputFieldType), errorMessage: validationError.msg});
+        reject({inputType: validationError.inputFieldType, errorMessage: validationError.msg});
     }
 }

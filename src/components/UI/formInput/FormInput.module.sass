@@ -53,7 +53,7 @@
     line-height: 13px
     height: 7px
 
-.textInput:has(input[type="date"]) 
+.textInput:has(input[type="date"])
 
   input::-webkit-calendar-picker-indicator 
     display: none
@@ -64,6 +64,17 @@
     bottom: 20px
     color: $header
     pointer-events: none
+
+.textInput:has(input[type="password"]) i, .textInput:has(input[type="text"]) i
+  position: absolute
+  right: 13px
+  bottom: 20px
+  cursor: pointer
+  color: $text
+  transition: all 0.15s ease
+
+  &:hover
+    color: $header
 
 .error 
   input 
