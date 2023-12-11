@@ -2,20 +2,20 @@ import {CartesianGrid, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAx
 import {IRecord} from "../../../../models/IRecord.ts";
 import {FC, memo, useMemo} from "react";
 import classes from "./RecordsChart.module.sass";
-import {IUser} from "../../../../models/IUser.ts";
 import {formatISODate} from "../../../../services/DateService.ts";
 import CustomChartTooltip from "../customChartTooltip/CustomChartTooltip.tsx";
 import {IRecordChartData} from "../../../../utils/types/RecordType.ts";
 import {useScreenResponsive} from "../../../../hooks/UseScreenResponsive.ts";
+import {IGoal} from "../../../../models/IGoal.ts";
 
 interface RecordsChartProps {
     records: IRecord[];
-    user: IUser;
+    goal: IGoal;
 }
 
-const RecordsChart: FC<RecordsChartProps> = memo(({records, user}) => {
+const RecordsChart: FC<RecordsChartProps> = memo(({records, goal}) => {
 
-    records = [{date: user.startDate, currentWeight: user.initialWeight, userId: user.id, id: -1}, ...records];
+    records = [{date: goal.startDate, currentWeight: goal.initialWeight, goalId: goal.id, id: -1}, ...records];
 
     const data: IRecordChartData[] = useMemo(() => records.map(record => ({
         date: record.date,

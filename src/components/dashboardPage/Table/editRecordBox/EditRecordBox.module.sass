@@ -13,5 +13,5 @@
   padding: 5px
   top: 100%
 
-  ul:has(&) > :nth-last-child(-n + 2) &  //get nearest parent list, choose  its' last 2 rows and style popup inside it
+  ul:has(&) > li:nth-child(n+6) &  //get nearest parent list, choose  its' last 2 rows and style popup inside it
     top: -400%

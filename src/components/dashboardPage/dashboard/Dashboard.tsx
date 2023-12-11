@@ -15,15 +15,15 @@ const Dashboard = () => {
     if (error) return <ErrorScreen message={JSON.stringify(error)}/>
     if (!data) return <ErrorScreen message={"Мы не смогли получить данные вашего аккаунта"}/>
 
-    const {userDTO, recordDTOList} = data;
+    const {goalDTOList} = data;
 
     return (
         <div className={classes.dashboard}>
             <div className={classes.leftSideDashboard}>
-                <ProgressMetricsSection user={userDTO} recordList={recordDTOList}/>
-                <CardsBox user={userDTO}/>
+                <ProgressMetricsSection goal={goalDTOList[0]} recordList={goalDTOList[0].recordDTOList}/>
+                <CardsBox goal={goalDTOList[0]}/>
             </div>
-            <TableSection user={userDTO} recordList={recordDTOList}/>
+            <TableSection goal={goalDTOList[0]} recordList={goalDTOList[0].recordDTOList}/>
         </div>
     );
 };

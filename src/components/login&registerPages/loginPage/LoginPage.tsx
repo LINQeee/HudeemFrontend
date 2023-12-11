@@ -6,7 +6,8 @@ import {IInputError} from "../../../utils/types/InputErrorType.ts";
 
 const LoginPage = () => {
 
-    const submitForm = (email: string, password: string, rememberMe: boolean, ip: string): Promise<IInputError> => new Promise(resolve => {
+    const submitForm = (email: string, password: string, rememberMe: boolean, ip: string): Promise<IInputError> => new Promise(() => {
+        console.log({email, password, rememberMe, ip})
     });
 
     return (

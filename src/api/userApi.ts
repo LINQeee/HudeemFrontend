@@ -1,10 +1,10 @@
 import {mainApi} from "./mainApi.ts";
-import {FetchUserResponse} from "./apiTypes.ts";
+import {ISummary} from "../models/ISummary.ts";
 
 
 export const userApi = mainApi.injectEndpoints({
     endpoints: build => ({
-        fetchUser: build.query<FetchUserResponse, number>({
+        fetchUser: build.query<ISummary, number>({
             query: (id: number) => ({
                 url: "/summary",
                 params: {

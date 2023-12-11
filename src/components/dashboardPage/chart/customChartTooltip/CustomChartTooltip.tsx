@@ -10,7 +10,7 @@ interface CustomChartTooltipProps {
 
 const CustomChartTooltip: FC<CustomChartTooltipProps> = memo(({active, payload, label}) => {
 
-    if (!active || !label || !payload) return null;
+    if (!active || !label || !payload || !payload[0]) return null;
 
     return (
         <div className={classes.customChartTooltip}>

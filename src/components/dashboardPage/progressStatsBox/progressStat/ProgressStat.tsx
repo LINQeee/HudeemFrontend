@@ -9,16 +9,16 @@ interface ProgressStatProps {
 
 const ProgressStat: FC<ProgressStatProps> = memo(({value, percent, label}) => {
 
-    const percentClassName = [classes.percent, percent && percent > 0 ? classes.increase : classes.decrease].join(" ");
+    const percentClassName = [classes.percent, percent !== undefined && percent > 0 ? classes.increase : classes.decrease].join(" ");
 
-    const calculatePercent: string = useMemo(() => percent ? `${Math.abs(percent)}%` : "", [percent]);
+    const calculatePercent: string = useMemo(() => percent !== undefined ? `${Math.abs(percent)}%` : "", [percent]);
 
     return (
         <div className={classes.progressStat}>
             <div className={percentClassName}>
                 <h4>{value}</h4>
                 {
-                    <span>{calculatePercent}{percent && <i className="fa-light fa-arrow-up-right"></i>}</span>
+                    <span>{calculatePercent}{percent !== undefined && <i className="fa-light fa-arrow-up-right"></i>}</span>
                 }
             </div>
             <span>{label}</span>

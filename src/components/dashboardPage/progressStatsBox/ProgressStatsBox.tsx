@@ -1,21 +1,21 @@
 import classes from "./ProgressStatsBox.module.sass";
 import ProgressStat from "./progressStat/ProgressStat.tsx";
 import {FC, memo} from "react";
-import {IUser} from "../../../models/IUser.ts";
 import {formatNumeralFullDate} from "../../../services/DateService.ts";
+import {IGoal} from "../../../models/IGoal.ts";
 
 interface ProgressStatsBoxProps {
-    user: IUser;
+    goal: IGoal;
 }
 
-const ProgressStatsBox: FC<ProgressStatsBoxProps> = memo(({user}) => {
+const ProgressStatsBox: FC<ProgressStatsBoxProps> = memo(({goal}) => {
     return (
         <div className={classes.progressStatsBox}>
-            <ProgressStat value={user.perDay} percent={-11} label={"В среднем в день"}/>
-            <ProgressStat value={user.perWeek} percent={11} label={"В среднем в неделю"}/>
-            <ProgressStat value={user.goalWeight} label={"Вес цели"}/>
-            <ProgressStat value={user.weightLeft} label={"Оставшийся вес"}/>
-            <ProgressStat value={formatNumeralFullDate(user.plannedDate)} label={"Дата достижения цели"}/>
+            <ProgressStat value={goal.perDay} percent={goal.perDayProgress} label={"В среднем в день"}/>
+            <ProgressStat value={goal.perWeek} percent={goal.perWeekProgress} label={"В среднем в неделю"}/>
+            <ProgressStat value={goal.goalWeight} label={"Вес цели"}/>
+            <ProgressStat value={goal.weightLeft} label={"Оставшийся вес"}/>
+            <ProgressStat value={formatNumeralFullDate(goal.plannedDate)} label={"Дата достижения цели"}/>
         </div>
     );
 });

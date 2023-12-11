@@ -3,20 +3,20 @@ import TableHeader from "../tableHeader/TableHeader.tsx";
 import TableRow from "../tableRow/TableRow.tsx";
 import {usePopup} from "../../../../hooks/UsePopup.ts";
 import Popup from "../../../UI/popup/Popup.tsx";
-import RecordForm from "../createRecordForm/RecordForm.tsx";
 import {FC, memo, useCallback, useState} from "react";
 import {IRecord} from "../../../../models/IRecord.ts";
 import {IInputError} from "../../../../utils/types/InputErrorType.ts";
 import {deleteRecords, editRecord} from "../../../../services/RecordApiService.ts";
 import {useDeleteRecordMutation, useEditRecordMutation} from "../../../../api/recordApi.ts";
 import {useArrayState} from "../../../../hooks/UseArrayState.ts";
+import RecordForm from "../recordForm/RecordForm.tsx";
 
 interface RecordsTableProps {
-    userId: number;
+    goalId: number;
     recordList: IRecord[];
 }
 
-const RecordsTable: FC<RecordsTableProps> = memo(({userId, recordList}) => {
+const RecordsTable: FC<RecordsTableProps> = memo(({goalId, recordList}) => {
 
     const {popupVisible, openPopup, closePopup} = usePopup();
     const [editingRecord, setEditingRecord] = useState<IRecord>();
@@ -33,7 +33,7 @@ const RecordsTable: FC<RecordsTableProps> = memo(({userId, recordList}) => {
 
         if (!id) throw new Error("id is required");
 
-        const editedRecord: IRecord = {id: id, currentWeight: weight, date: date, userId: userId};
+        const editedRecord: IRecord = {id: id, currentWeight: weight, date: date, goalId: goalId};
         return editRecord(editedRecord, closePopup, editRecordTrigger);
     }
 
