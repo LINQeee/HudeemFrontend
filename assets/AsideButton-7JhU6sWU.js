@@ -1,1 +1,0 @@
-import{r as c,j as s}from"./index-qEtiFX18.js";const r="_asideButton_1pfgu_1",u="_active_1pfgu_23",t={asideButton:r,active:u},m=c.memo(({content:e,iconClasses:o,active:a,onClick:n})=>{const i=[t.asideButton,a?t.active:void 0].join(" ");return s.jsxs("button",{className:i,onClick:n,children:[s.jsx("i",{className:o}),s.jsx("span",{children:e})]})});export{m as A};

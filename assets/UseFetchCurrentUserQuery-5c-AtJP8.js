@@ -1,1 +1,0 @@
-import{m as s,r as t,C as n}from"./index-qEtiFX18.js";const o=s.injectEndpoints({endpoints:e=>({fetchUser:e.query({query:r=>({url:"/summary",params:{id:r},responseHandler:"content-type"}),providesTags:[{type:"Records"}]})})}),{useFetchUserQuery:u}=o,a=()=>u(t.useContext(n));export{a as u};
