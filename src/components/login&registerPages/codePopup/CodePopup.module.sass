@@ -1,0 +1,32 @@
+@import "../../../styles/ThemeVariables"
+@import "../../../styles/Utils"
+
+.codePopup
+  @include flex-column
+  width: calc(100% - 100px)
+  position: absolute
+  z-index: 101
+  @include panel-styles
+  box-shadow: $panel-shadow-dark
+  padding: 25px
+  gap: 45px
+  top: 200px
+  left: calc(50% - calc(100% - 100px) / 2)
+
+  :has(> &) > :not(&)
+    transition: all 0.4s ease
+    opacity: 0.3
+
+.header
+  @include flex-column
+  gap: 3px
+
+  > h2
+    font-weight: 600
+    color: $header
+    font-size: 27px
+
+  > h5
+    color: $text
+    font-size: 14px
+    font-weight: 500

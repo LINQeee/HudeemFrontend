@@ -25,7 +25,9 @@ const TableSection: FC<TableSectionProps> = memo(({goal, recordList}) => {
 
     const submitCreateRecordForm = (weight: number, date: string): Promise<IInputError> => {
         const newRecord: Omit<IRecord, "id"> = {date: date, currentWeight: weight, goalId: goal.id};
-        return createRecord(newRecord, closePopup, createRecordTrigger);
+        return new Promise(resolve => {
+            createRecord(newRecord, createRecordTrigger).then(() => closePopup()).catch(resolve);
+        });
     }
 
     return (

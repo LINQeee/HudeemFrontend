@@ -10,7 +10,7 @@ import Checkbox from "../../UI/checkbox/Checkbox.tsx";
 import CustomLink from "../../UI/customLink/CustomLink.tsx";
 
 interface LoginFormProps {
-    onSubmitForm: (email: string, password: string, rememberMe: boolean, ip: string) => Promise<IInputError>;
+    onSubmitForm: (email: string, password: string, rememberMe: boolean) => Promise<IInputError> | any;
 }
 
 const LoginForm: FC<LoginFormProps> = ({onSubmitForm}) => {
@@ -18,7 +18,7 @@ const LoginForm: FC<LoginFormProps> = ({onSubmitForm}) => {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
     const [rememberMe, setRememberMe] = useState<boolean>(false);
-    const [errors, removeError, submit] = useForm(() => onSubmitForm(email, password, rememberMe, ""));
+    const [errors, removeError, submit] = useForm(() => onSubmitForm(email, password, rememberMe));
 
     const submitForm = useCallback(() => submit([
         {value: email, type: FormInputEnum.EMAIL},
@@ -34,10 +34,12 @@ const LoginForm: FC<LoginFormProps> = ({onSubmitForm}) => {
             <FormInput type={FormInputEnum.EMAIL} label={"Электронная почта"} value={email} setValue={setEmail}
                        error={errors.find(error => error.inputType === FormInputEnum.EMAIL)}
                        removeError={removeError}
+                       autocomplete={"email"}
             />
             <FormInput type={FormInputEnum.PASSWORD} label={"Пароль"} value={password} setValue={setPassword}
                        error={errors.find(error => error.inputType === FormInputEnum.PASSWORD)}
                        removeError={removeError}
+                       autocomplete={"current-password"}
             />
             <div className={classes.additionalBox}>
                 <div>

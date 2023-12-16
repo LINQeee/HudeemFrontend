@@ -4,7 +4,9 @@ import {useFetchCurrentUserQuery} from "../../../../hooks/UseFetchCurrentUserQue
 
 const UserAvatar = () => {
 
-    const {data} = useFetchCurrentUserQuery();
+    const {data, isLoading} = useFetchCurrentUserQuery();
+
+    if(isLoading) return null;
 
     return (
         <div className={classes.userAvatar}>

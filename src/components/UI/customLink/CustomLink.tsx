@@ -6,11 +6,12 @@ interface CustomLinkProps {
     href: string;
     label: string;
     fontSize: number;
+    onClick?: () => void;
 }
 
-const CustomLink: FC<CustomLinkProps> = ({href, label, fontSize}) => {
+const CustomLink: FC<CustomLinkProps> = ({href, label, fontSize, onClick}) => {
     return (
-        <Link className={classes.link} to={href} style={{fontSize: fontSize}}>{label}</Link>
+        <Link className={classes.link} to={href} style={{fontSize: fontSize}} onClick={onClick}>{label}</Link>
     );
 };
 

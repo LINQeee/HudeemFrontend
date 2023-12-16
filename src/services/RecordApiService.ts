@@ -1,24 +1,22 @@
 import {IInputError} from "../utils/types/InputErrorType.ts";
-import {isValidationError, IValidationError} from "../models/IValidationError.ts";
+import {isValidationError, IValidationError} from "../models/errors/IValidationError.ts";
 import {CreateRecordTrigger, DeleteRecordTrigger, EditRecordTrigger} from "../api/recordApi.ts";
 import {IRecord} from "../models/IRecord.ts";
 import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
 
-export const editRecord = (editedRecord: IRecord, callback: () => void, editRecord: EditRecordTrigger): Promise<IInputError> => new Promise(reject => {
+export const editRecord = (editedRecord: IRecord, editRecord: EditRecordTrigger): Promise<string> => new Promise((resolve, reject) => {
 
     editRecord(editedRecord).unwrap()
         .then(result => {
-            console.log(result);
-            callback();
+            resolve(result);
         })
         .catch(err => rejectValidationError(err, reject));
 });
 
-export const createRecord = (newRecord: Omit<IRecord, "id">, callback: () => void, createRecord: CreateRecordTrigger): Promise<IInputError> => new Promise(reject => {
+export const createRecord = (newRecord: Omit<IRecord, "id">, createRecord: CreateRecordTrigger): Promise<string> => new Promise((resolve, reject) => {
     createRecord(newRecord).unwrap()
         .then(response => {
-            console.log(response);
-            callback();
+            resolve(response);
         })
         .catch(err => rejectValidationError(err, reject));
 });

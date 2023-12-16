@@ -34,7 +34,9 @@ const RecordsTable: FC<RecordsTableProps> = memo(({goalId, recordList}) => {
         if (!id) throw new Error("id is required");
 
         const editedRecord: IRecord = {id: id, currentWeight: weight, date: date, goalId: goalId};
-        return editRecord(editedRecord, closePopup, editRecordTrigger);
+        return new Promise(resolve => {
+            editRecord(editedRecord, editRecordTrigger).then(() => closePopup()).catch(resolve);
+        });
     }
 
     const deleteSelectedRecords = useCallback(() => deleteRecords(selectedRecords, clearSelectedRecords, deleteRecordTrigger),

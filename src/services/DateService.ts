@@ -16,3 +16,8 @@ export const formatNumeralFullDate = (isoDate: string): string => {
 const capitalize = (str: string): string => {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+export const plusDays = (date: Date, count: number): Date => {
+    date.setDate(date.getDate() + count);
+    return date;
+}

@@ -23,7 +23,7 @@ const Notification: FC<NotificationProps> = memo(({notification}) => {
     ].join(" ");
 
     useEffect(() => {
-        setTimeout(() => dispatch(notificationSlice.actions.closeNotification(id)), 3000);
+        setTimeout(() => dispatch(notificationSlice.actions.closeNotification(id)), 5000);
     }, [dispatch, id]);
 
     return (
