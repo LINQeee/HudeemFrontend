@@ -1,12 +1,12 @@
 import classes from "./CodePopup.module.sass";
-import Popup from "../../UI/popup/Popup.tsx";
+import Popup from "../../../UI/popup/Popup.tsx";
 import {FC, useState} from "react";
 import CodeInput from "../codeInput/CodeInput.tsx";
-import {useCheckCodeMutation, useSendCodeMutation} from "../../../api/codeApi.ts";
-import {ICredentials} from "../../../models/ICredentials.ts";
-import {useAppDispatch} from "../../../hooks/Redux.ts";
-import {notificationSlice} from "../../../store/reducers/NotificationSlice.ts";
-import {NotificationType} from "../../../utils/enums/NotificationTypeEnum.ts";
+import {useCheckCodeMutation, useSendCodeMutation} from "../../../../api/codeApi.ts";
+import {ICredentials} from "../../../../models/ICredentials.ts";
+import {useAppDispatch} from "../../../../hooks/Redux.ts";
+import {notificationSlice} from "../../../../store/reducers/NotificationSlice.ts";
+import {NotificationType} from "../../../../utils/enums/NotificationTypeEnum.ts";
 
 interface CodePopupProps {
     popupVisible: boolean;

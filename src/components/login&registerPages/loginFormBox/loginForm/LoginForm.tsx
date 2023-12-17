@@ -1,13 +1,13 @@
 import classes from "./LoginForm.module.sass";
-import FormInput from "../../UI/formInput/FormInput.tsx";
+import FormInput from "../../../UI/formInput/FormInput.tsx";
 import {FC, useCallback, useState} from "react";
-import {FormInputEnum} from "../../../utils/enums/FormInputEnum.ts";
-import {useForm} from "../../../hooks/UseForm.ts";
-import {IInputError} from "../../../utils/types/InputErrorType.ts";
-import {StyleType} from "../../../utils/enums/StyleTypeEnum.ts";
-import ActionButton from "../../UI/actionButton/ActionButton.tsx";
-import Checkbox from "../../UI/checkbox/Checkbox.tsx";
-import CustomLink from "../../UI/customLink/CustomLink.tsx";
+import {FormInputEnum} from "../../../../utils/enums/FormInputEnum.ts";
+import {useForm} from "../../../../hooks/UseForm.ts";
+import {IInputError} from "../../../../utils/types/InputErrorType.ts";
+import {StyleType} from "../../../../utils/enums/StyleTypeEnum.ts";
+import ActionButton from "../../../UI/actionButton/ActionButton.tsx";
+import Checkbox from "../../../UI/checkbox/Checkbox.tsx";
+import CustomLink from "../../../UI/customLink/CustomLink.tsx";
 
 interface LoginFormProps {
     onSubmitForm: (email: string, password: string, rememberMe: boolean) => Promise<IInputError> | any;

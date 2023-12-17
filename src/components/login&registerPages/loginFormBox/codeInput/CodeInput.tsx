@@ -1,6 +1,6 @@
 import classes from "./CodeInput.module.sass";
 import React, {FC} from "react";
-import CustomLink from "../../UI/customLink/CustomLink.tsx";
+import CustomLink from "../../../UI/customLink/CustomLink.tsx";
 
 interface CodeInputProps {
     onInputSubmit: (value: string) => void;
