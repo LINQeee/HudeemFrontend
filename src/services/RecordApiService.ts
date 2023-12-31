@@ -1,8 +1,6 @@
-import {IInputError} from "../utils/types/InputErrorType.ts";
-import {isValidationError, IValidationError} from "../models/errors/IValidationError.ts";
+import {rejectValidationError} from "../models/errors/IValidationError.ts";
 import {CreateRecordTrigger, DeleteRecordTrigger, EditRecordTrigger} from "../api/recordApi.ts";
 import {IRecord} from "../models/IRecord.ts";
-import {FetchBaseQueryError} from "@reduxjs/toolkit/query";
 
 export const editRecord = (editedRecord: IRecord, editRecord: EditRecordTrigger): Promise<string> => new Promise((resolve, reject) => {
 
@@ -26,11 +24,4 @@ export const deleteRecords = async (records: IRecord[], callback: () => void, de
         await deleteRecord(record.id);
     }
     callback();
-}
-
-const rejectValidationError = (error: FetchBaseQueryError, reject: (value: (IInputError | PromiseLike<IInputError>)) => void) => {
-    if (typeof error.data === 'object' && isValidationError(error.data as IValidationError)) {
-        const validationError = error.data as IValidationError;
-        reject({inputType: validationError.inputFieldType, errorMessage: validationError.msg});
-    }
 }

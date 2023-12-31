@@ -1,5 +1,5 @@
 import classes from "./RecordForm.module.sass";
-import FormInput from "../../../UI/formInput/FormInput.tsx";
+import FormInput from "../../../UI/formUI/formInput/FormInput.tsx";
 import {FC, memo, useCallback, useState} from "react";
 import SectionHeader from "../../../UI/sectionHeader/SectionHeader.tsx";
 import ActionButton from "../../../UI/actionButton/ActionButton.tsx";
@@ -30,23 +30,19 @@ const RecordForm: FC<RecordFormProps> = memo(({
     const [weight, setWeight] = useState<string>(initWeight);
     const [date, setDate] = useState<string>(initDate);
 
-    const [errors, removeError, submit] = useForm(() => onSubmitForm(parseFloat(weight), date, id));
+    const formHook = useForm(() => onSubmitForm(parseFloat(weight), date, id));
 
-    const submitForm = useCallback(() => submit([
+    const submitForm = useCallback(() => formHook.submit([
         {value: weight, type: FormInputEnum.WEIGHT},
         {value: date, type: FormInputEnum.DATE}
-    ]), [submit, weight, date]);
+    ]), [formHook.submit, weight, date]);
 
     return (
         <form className={classes.createRecordForm} onClick={e => e.stopPropagation()}>
             <SectionHeader content={formLabel}/>
-            <FormInput type={FormInputEnum.WEIGHT} label={"Вес"} value={weight} setValue={setWeight}
-                       error={errors.find(err => err.inputType === FormInputEnum.WEIGHT)}
-                       removeError={removeError}/>
+            <FormInput type={FormInputEnum.WEIGHT} label={"Вес"} value={weight} setValue={setWeight} formHook={formHook}/>
 
-            <FormInput type={FormInputEnum.DATE} label={"Дата"} value={date} setValue={setDate}
-                       error={errors.find(err => err.inputType === FormInputEnum.DATE)}
-                       removeError={removeError}/>
+            <FormInput type={FormInputEnum.DATE} label={"Дата"} value={date} setValue={setDate} formHook={formHook}/>
             <ActionButton label={buttonLabel} iconClasses={""} styleType={StyleType.PRIMARY} onClick={submitForm}/>
         </form>
     );

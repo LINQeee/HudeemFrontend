@@ -3,11 +3,12 @@ import {IValidateField} from "../utils/types/ValidateInputType.ts";
 import {IInputError, isInputError} from "../utils/types/InputErrorType.ts";
 import {useArrayState} from "./UseArrayState.ts";
 
-type IUseForm = [
-    IInputError[],
-    (error: IInputError) => void,
-    (fields: IValidateField[]) => void
-]
+export type IUseForm = {
+    errors: IInputError[],
+    removeError: (error: IInputError) => void,
+    submit: (fields: IValidateField[]) => void,
+    addError: (value: IInputError) => void
+}
 
 export const useForm = (onSubmitForm: () => Promise<IInputError> | any): IUseForm => {
 
@@ -16,7 +17,7 @@ export const useForm = (onSubmitForm: () => Promise<IInputError> | any): IUseFor
     const submit = (fields: IValidateField[]) => {
         const validateResult = validateAllFields(fields);
 
-        if (!validateResult.length) {
+        if (!validateResult.length && !errors.length) {
             const submitResponse = onSubmitForm();
             if (submitResponse instanceof Promise) {
                 submitResponse.then(error => {
@@ -28,5 +29,5 @@ export const useForm = (onSubmitForm: () => Promise<IInputError> | any): IUseFor
         }
     }
 
-    return [errors, removeError, submit];
+    return {errors, removeError, submit, addError};
 }

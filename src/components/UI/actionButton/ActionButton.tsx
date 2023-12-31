@@ -4,7 +4,7 @@ import {StyleType} from "../../../utils/enums/StyleTypeEnum.ts";
 
 interface SubmitButtonProps {
     label: string;
-    iconClasses: string;
+    iconClasses?: string;
     styleType: StyleType;
     onClick: () => void;
     height?: number;

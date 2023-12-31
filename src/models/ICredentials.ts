@@ -3,5 +3,5 @@ export interface ICredentials {
     password: string;
     code: string;
     rememberMe: boolean;
-    ip: string;
+    authToken: string;
 }

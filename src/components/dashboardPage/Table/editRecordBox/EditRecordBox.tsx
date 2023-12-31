@@ -1,5 +1,5 @@
 import classes from "./EditRecordBox.module.sass";
-import AsideButton from "../../../UI/asideButton/AsideButton.tsx";
+import AsideButton from "../../../UI/layoutUI/asideButton/AsideButton.tsx";
 import {FC, memo} from "react";
 
 interface EditRecordPopupProps {

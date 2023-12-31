@@ -13,8 +13,8 @@ export const codeApi = mainApi.injectEndpoints({
                }
            }
        }),
-       checkCode: build.mutation<Omit<ICredentials, "password" | "rememberMe" | "ip">, Omit<ICredentials, "password">>({
-            query: (body: Omit<ICredentials, "password" | "rememberMe">) => {
+       checkCode: build.mutation<Omit<ICredentials, "password" | "rememberMe">, Omit<ICredentials, "password" | "authToken">>({
+            query: (body) => {
                 return {
                     url: "/check-code",
                     method: "POST",

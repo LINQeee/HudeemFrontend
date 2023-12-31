@@ -8,6 +8,6 @@ export interface IUser {
     age: number;
     code: string;
     expireAuthorisationDate: string;
-    ip: string;
     rememberMe: boolean;
+    authToken: string;
 }

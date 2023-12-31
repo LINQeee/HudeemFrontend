@@ -1,0 +1,41 @@
+@import "../../../../styles/ThemeVariables"
+@import "../../../../styles/Utils"
+
+.notification 
+  background: $secondary-background
+  box-shadow: $panel-shadow-dark
+  box-sizing: content-box
+  @include align-center-justify-start
+  padding: 7px
+  border-radius: 8px
+  gap: 10px
+  min-width: 250px
+  pointer-events: none
+
+  > i 
+    font-size: 30px
+
+
+.success 
+  color: $highlight-green
+
+.error 
+  color: $error
+
+.warning 
+  color: $yellow
+
+.informationBox 
+  @include flex-column
+  @include align-start-justify-between
+  gap: 2px
+
+  > span 
+    font-size: 15px
+    color: $text
+  
+
+  > h6 
+    font-size: 16px
+    font-weight: 500
+  

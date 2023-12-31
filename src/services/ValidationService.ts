@@ -7,18 +7,23 @@ export const validateField = ({value, type}: IValidateField): IInputError | unde
         case FormInputEnum.EMAIL:
             if (isEmptyOrSpaces(value)) return {inputType: type, errorMessage: "Введите почту!"};
             if (!isEmailValid(value)) return {inputType: type, errorMessage: "Некорректная почта!"};
-                break;
+            break;
         case FormInputEnum.DATE:
             if (isEmptyOrSpaces(value)) return {inputType: type, errorMessage: "Введите дату!"};
             if (!Date.parse(value)) return {inputType: type, errorMessage: "Некорректная дата!"};
             if (new Date(value) > new Date()) return {inputType: type, errorMessage: "Дата из будущего!"};
             break;
         case FormInputEnum.WEIGHT:
-            if (isEmptyOrSpaces(value)) return {inputType: type, errorMessage: "Введите вес!"};
-            if (parseFloat(value) < 0) return {inputType: type, errorMessage: "Вес не может быть отрицательным!"};
+        case FormInputEnum.AGE:
+        case FormInputEnum.HEIGHT:
+            if (isEmptyOrSpaces(value)) return {inputType: type, errorMessage: "Введите значение!"};
+            if (parseFloat(value) < 0) return {inputType: type, errorMessage: "Значение не может быть отрицательным!"};
             break;
         case FormInputEnum.PASSWORD:
-            if (isEmptyOrSpaces(value)) return {inputType: type, errorMessage: "Введите пароль!"};
+        case FormInputEnum.USERNAME:
+        case FormInputEnum.GENDER:
+            if (isEmptyOrSpaces(value)) return {inputType: type, errorMessage: "Введите значение!"};
+            break;
     }
 
     return undefined;
